@@ -1,0 +1,7 @@
+# Litmatch Error History
+
+> Ledger of problems met while building Litmatch and how they were solved (public subset: open security/production findings are withheld). The page builds its list with JavaScript; for machine reading use the files below.
+
+- [Issue ledger, all rows](https://ducmanh001.github.io/litmatch-atlas-demo/pack/issues/index.md)
+- [Issues as JSON](https://ducmanh001.github.io/litmatch-atlas-demo/pack/json/issues.json)
+- [Context pack index](https://ducmanh001.github.io/litmatch-atlas-demo/llms.txt)
