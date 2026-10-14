@@ -1,7 +1,59 @@
 # Litmatch Error History
 
-> Ledger of problems met while building Litmatch and how they were solved (public subset: open security/production findings are withheld). The page builds its list with JavaScript; for machine reading use the files below.
+> Full public ledger of problems met while building Litmatch (108 rows, 102 real, 6 false alarms): what broke, root cause, resolution, evidence, status, plus CI history. Nothing is withheld, open security and production findings included.
 
-- [Issue ledger, all rows](https://ducmanh001.github.io/litmatch-atlas-demo/pack/issues/index.md)
-- [Issues as JSON](https://ducmanh001.github.io/litmatch-atlas-demo/pack/json/issues.json)
-- [Context pack index](https://ducmanh001.github.io/litmatch-atlas-demo/llms.txt)
+## Start here
+
+- [roadmap.md](https://ducmanh001.github.io/litmatch-error-history/roadmap.md): what is still open, grouped; lessons
+- [summary.md](https://ducmanh001.github.io/litmatch-error-history/summary.md): counts, CI numbers, playbook, method, limits
+- [issues/index.md](https://ducmanh001.github.io/litmatch-error-history/issues/index.md): all rows with status, tier, area, date, title
+- [json/issues.json](https://ducmanh001.github.io/litmatch-error-history/json/issues.json): the ledger as data
+- [search-index.json](https://ducmanh001.github.io/litmatch-error-history/search-index.json): machine search
+- [sitemap.xml](https://ducmanh001.github.io/litmatch-error-history/sitemap.xml): all URLs
+- [llms-full.txt](https://ducmanh001.github.io/litmatch-error-history/llms-full.txt): every issue in one file
+
+## Open or in progress (16)
+
+- [issues/P085.md](https://ducmanh001.github.io/litmatch-error-history/issues/P085.md): [open, frontend-ux] Guest reload mất device token → Matching 401
+- [issues/P078.md](https://ducmanh001.github.io/litmatch-error-history/issues/P078.md): [open, dependencies] PR Dependabot đỏ vì chính sách minimumReleaseAge của pnpm
+- [issues/P077.md](https://ducmanh001.github.io/litmatch-error-history/issues/P077.md): [open, windows-toolchain] Test hard-kill của run-stage lỗi trên Windows (exit 124)
+- [issues/P075.md](https://ducmanh001.github.io/litmatch-error-history/issues/P075.md): [open, auth-security] OTP trả mã ngay trong response khi production bật OTP
+- [issues/P074.md](https://ducmanh001.github.io/litmatch-error-history/issues/P074.md): [in-progress, deploy-config] Core API production crash lúc boot (media storage dev / thiếu biến R2)
+- [issues/P065.md](https://ducmanh001.github.io/litmatch-error-history/issues/P065.md): [open, deploy-config] Production chạy bản cũ: route profile 404, thông báo Facebook cũ
+- [issues/P063.md](https://ducmanh001.github.io/litmatch-error-history/issues/P063.md): [open, ci-cd] Test frontend (admin/web) timeout lặp lại
+- [issues/P012.md](https://ducmanh001.github.io/litmatch-error-history/issues/P012.md): [open, auth-security] CodeQL: loop-bound-injection (high) ở common/hash/fnv1a.ts còn mở
+- [issues/P104.md](https://ducmanh001.github.io/litmatch-error-history/issues/P104.md): [open, other] soul-match end phát lại soul.ended khi replay
+- [issues/P103.md](https://ducmanh001.github.io/litmatch-error-history/issues/P103.md): [open, other] Phân trang cursor video-queue admin (pending_review tăng dần nhưng cursor dùng less-than;…
+- [issues/P102.md](https://ducmanh001.github.io/litmatch-error-history/issues/P102.md): [open, other] Comment k8s lỗi thời
+- [issues/P101.md](https://ducmanh001.github.io/litmatch-error-history/issues/P101.md): [open, other] Lời mời hết hạn kiểu lazy-expire không được persist
+- [issues/P100.md](https://ducmanh001.github.io/litmatch-error-history/issues/P100.md): [open, other] getHiddenUserIds không có cửa sổ thời gian (cần quyết định sản phẩm)
+- [issues/P099.md](https://ducmanh001.github.io/litmatch-error-history/issues/P099.md): [open, other] Ranked sort loại hàng có rankScore IS NULL
+- [issues/P094.md](https://ducmanh001.github.io/litmatch-error-history/issues/P094.md): [open, matching] Giới hạn đã biết: advisory lock Palm/Movie Match, outbox chưa có consumer/retention
+- [issues/P055.md](https://ducmanh001.github.io/litmatch-error-history/issues/P055.md): [open, ci-cd] Chưa bắt buộc required checks: PR vẫn merge được khi CI đỏ
+
+## By area
+
+- [issues/ci-cd.md](https://ducmanh001.github.io/litmatch-error-history/issues/ci-cd.md): 24 rows
+- [issues/ai-agent-process.md](https://ducmanh001.github.io/litmatch-error-history/issues/ai-agent-process.md): 13 rows
+- [issues/auth-security.md](https://ducmanh001.github.io/litmatch-error-history/issues/auth-security.md): 12 rows
+- [issues/frontend-ux.md](https://ducmanh001.github.io/litmatch-error-history/issues/frontend-ux.md): 9 rows
+- [issues/windows-toolchain.md](https://ducmanh001.github.io/litmatch-error-history/issues/windows-toolchain.md): 8 rows
+- [issues/deploy-config.md](https://ducmanh001.github.io/litmatch-error-history/issues/deploy-config.md): 7 rows
+- [issues/other.md](https://ducmanh001.github.io/litmatch-error-history/issues/other.md): 7 rows
+- [issues/matching.md](https://ducmanh001.github.io/litmatch-error-history/issues/matching.md): 6 rows
+- [issues/database-concurrency.md](https://ducmanh001.github.io/litmatch-error-history/issues/database-concurrency.md): 5 rows
+- [issues/observability.md](https://ducmanh001.github.io/litmatch-error-history/issues/observability.md): 4 rows
+- [issues/economy-payment.md](https://ducmanh001.github.io/litmatch-error-history/issues/economy-payment.md): 3 rows
+- [issues/realtime-gateway.md](https://ducmanh001.github.io/litmatch-error-history/issues/realtime-gateway.md): 3 rows
+- [issues/short-video.md](https://ducmanh001.github.io/litmatch-error-history/issues/short-video.md): 3 rows
+- [issues/dependencies.md](https://ducmanh001.github.io/litmatch-error-history/issues/dependencies.md): 2 rows
+- [issues/docs-tooling.md](https://ducmanh001.github.io/litmatch-error-history/issues/docs-tooling.md): 2 rows
+
+## Related sites
+
+- [System Atlas](https://ducmanh001.github.io/litmatch-atlas-demo/llms.txt): database, API, config, frontend, project roadmap
+- [Service Map](https://ducmanh001.github.io/litmatch-service-map/llms.txt): who calls whom and why
+
+## Optional
+
+- [Error History page](https://ducmanh001.github.io/litmatch-error-history/index.html): large filterable page (not for crawling)

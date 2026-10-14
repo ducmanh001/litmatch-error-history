@@ -1,0 +1,200 @@
+{
+ "generatedFrom": "litmatch fix/multi-pod-readiness @ d3cb28c",
+ "site": "history",
+ "base": "https://ducmanh001.github.io/litmatch-error-history",
+ "updated": "2026-10-14",
+ "entities": [
+  {
+   "id": "issues:ai-agent-process",
+   "type": "issue",
+   "title": "Issues in area ai-agent-process",
+   "summary": "status: fixed; tier: B; date: 2026-07-12; confidence: high",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/ai-agent-process.md",
+   "file": "issues/ai-agent-process.md"
+  },
+  {
+   "id": "issues:auth-security",
+   "type": "issue",
+   "title": "Issues in area auth-security",
+   "summary": "status: fixed; tier: A; date: 2026-07-13; confidence: high",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/auth-security.md",
+   "file": "issues/auth-security.md"
+  },
+  {
+   "id": "issues:ci-cd",
+   "type": "issue",
+   "title": "Issues in area ci-cd",
+   "summary": "status: fixed; tier: A; date: 2026-07-13; confidence: high",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/ci-cd.md",
+   "file": "issues/ci-cd.md"
+  },
+  {
+   "id": "issues:database-concurrency",
+   "type": "issue",
+   "title": "Issues in area database-concurrency",
+   "summary": "status: fixed; tier: A; date: 2026-07-18; confidence: high",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/database-concurrency.md",
+   "file": "issues/database-concurrency.md"
+  },
+  {
+   "id": "issues:dependencies",
+   "type": "issue",
+   "title": "Issues in area dependencies",
+   "summary": "status: open; tier: A; date: 2026-09-09; confidence: high",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/dependencies.md",
+   "file": "issues/dependencies.md"
+  },
+  {
+   "id": "issues:deploy-config",
+   "type": "issue",
+   "title": "Issues in area deploy-config",
+   "summary": "status: fixed; tier: A; date: 2026-07-20; confidence: medium",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/deploy-config.md",
+   "file": "issues/deploy-config.md"
+  },
+  {
+   "id": "issues:docs-tooling",
+   "type": "issue",
+   "title": "Issues in area docs-tooling",
+   "summary": "status: fixed; tier: A; date: 2026-10-09; confidence: high",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/docs-tooling.md",
+   "file": "issues/docs-tooling.md"
+  },
+  {
+   "id": "issues:economy-payment",
+   "type": "issue",
+   "title": "Issues in area economy-payment",
+   "summary": "status: fixed; tier: A; date: 2026-07-18; confidence: high",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/economy-payment.md",
+   "file": "issues/economy-payment.md"
+  },
+  {
+   "id": "issues:frontend-ux",
+   "type": "issue",
+   "title": "Issues in area frontend-ux",
+   "summary": "status: fixed; tier: A; date: 2026-08-14; confidence: high",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/frontend-ux.md",
+   "file": "issues/frontend-ux.md"
+  },
+  {
+   "id": "issues:matching",
+   "type": "issue",
+   "title": "Issues in area matching",
+   "summary": "status: fixed; tier: A; date: 2026-08-12; confidence: low",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/matching.md",
+   "file": "issues/matching.md"
+  },
+  {
+   "id": "issues:observability",
+   "type": "issue",
+   "title": "Issues in area observability",
+   "summary": "status: fixed; tier: A; date: 2026-08-02; confidence: low",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/observability.md",
+   "file": "issues/observability.md"
+  },
+  {
+   "id": "issues:other",
+   "type": "issue",
+   "title": "Issues in area other",
+   "summary": "status: open; tier: B; date: 2026-10-09; confidence: medium",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/other.md",
+   "file": "issues/other.md"
+  },
+  {
+   "id": "issues:realtime-gateway",
+   "type": "issue",
+   "title": "Issues in area realtime-gateway",
+   "summary": "status: false-alarm; tier: C; date: 2026-10-09; confidence: high",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/realtime-gateway.md",
+   "file": "issues/realtime-gateway.md"
+  },
+  {
+   "id": "issues:short-video",
+   "type": "issue",
+   "title": "Issues in area short-video",
+   "summary": "status: fixed; tier: A; date: 2026-10-09; confidence: high",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/short-video.md",
+   "file": "issues/short-video.md"
+  },
+  {
+   "id": "issues:windows-toolchain",
+   "type": "issue",
+   "title": "Issues in area windows-toolchain",
+   "summary": "status: fixed; tier: A; date: 2026-08-14; confidence: high",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/windows-toolchain.md",
+   "file": "issues/windows-toolchain.md"
+  },
+  {
+   "id": "issues:index",
+   "type": "issue",
+   "title": "Error history ledger",
+   "summary": "Loại A = lỗi / sự cố thực tế; B = thiết kế, quy trình, quan sát từ đọc code; C = báo động giả.",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/issues/index.md",
+   "file": "issues/index.md"
+  },
+  {
+   "id": "data:json/issues",
+   "type": "data",
+   "title": "issues.json",
+   "summary": "Error history ledger rows",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/json/issues.json",
+   "file": "json/issues.json"
+  },
+  {
+   "id": "data:json/stats",
+   "type": "data",
+   "title": "stats.json",
+   "summary": "Error history statistics, playbook, method, limits",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/json/stats.json",
+   "file": "json/stats.json"
+  },
+  {
+   "id": "data:page-data",
+   "type": "data",
+   "title": "page-data.json",
+   "summary": "Data embedded in the error history page",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/page-data.json",
+   "file": "page-data.json"
+  },
+  {
+   "id": "summary",
+   "type": "roadmap",
+   "title": "Error history summary",
+   "summary": "Loại A = lỗi / sự cố thực tế; B = thiết kế, quy trình, quan sát từ đọc code; C = báo động giả.",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/summary.md",
+   "file": "summary.md"
+  },
+  {
+   "id": "roadmap",
+   "type": "roadmap",
+   "title": "Roadmap · Litmatch Error History",
+   "summary": "\"Roadmap\" của trang này: **A. lộ trình đọc**, **B. việc còn mở xếp theo loại** (sổ lỗi công khai đầy đủ, kể cả mục bảo mật và production đang mở), **C. bài học để không lặp lại**, **D. lộ trình dự án…",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/roadmap.md",
+   "file": "roadmap.md"
+  },
+  {
+   "id": "README",
+   "type": "misc",
+   "title": "Litmatch Error History",
+   "summary": "Sổ lỗi đầy đủ của dự án Litmatch: 108 vấn đề, nguyên nhân, cách xử lý, bằng chứng, lịch sử CI và danh sách việc còn mở.",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/README.md",
+   "file": "README.md"
+  },
+  {
+   "id": "lookup:issues",
+   "type": "lookup",
+   "title": "Lookup: issues",
+   "summary": "P0xx to the file that documents it.",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/lookup/issues.md",
+   "file": "lookup/issues.md"
+  },
+  {
+   "id": "lookup:index",
+   "type": "lookup",
+   "title": "Lookup index",
+   "summary": "One line per name so a single fetch answers \"which file documents X\". Paths are relative to this folder.",
+   "url": "https://ducmanh001.github.io/litmatch-error-history/lookup/index.md",
+   "file": "lookup/index.md"
+  }
+ ]
+}

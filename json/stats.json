@@ -1,0 +1,212 @@
+{
+ "ci": {
+  "runs": 360,
+  "fail": 132,
+  "human_runs": 286,
+  "human_fail": 81,
+  "dep_runs": 74,
+  "dep_fail": 51,
+  "bot_runs": 141,
+  "bot_fail": 94,
+  "main_runs": 127,
+  "main_fail": 26,
+  "peak_day": "13/07",
+  "peak_n": 32,
+  "last_human_fail": "14/08",
+  "months": [
+   {
+    "m": "2026-07",
+    "runs": 219,
+    "fail": 74
+   },
+   {
+    "m": "2026-08",
+    "runs": 64,
+    "fail": 7
+   },
+   {
+    "m": "2026-10",
+    "runs": 3,
+    "fail": 0
+   }
+  ],
+  "steps": [
+   {
+    "label": "Frontend: contract, test, build, bundle audit",
+    "n": 16
+   },
+   {
+    "label": "gitleaks quét lịch sử Git tìm secret",
+    "n": 15
+   },
+   {
+    "label": "ESLint (nx run-many lint)",
+    "n": 12
+   },
+   {
+    "label": "Preflight test + build (tương đương local)",
+    "n": 9
+   },
+   {
+    "label": "Preflight chất lượng (format/lint)",
+    "n": 7
+   },
+   {
+    "label": "Trivy: lỗ hổng/misconfig trong repo",
+    "n": 6
+   },
+   {
+    "label": "Audit dependency mức high/critical",
+    "n": 4
+   },
+   {
+    "label": "Trivy: quét runtime image",
+    "n": 4
+   }
+  ],
+  "note": "Lấy bằng gh từ 501 run (11/07 đến 09/10). Số đỏ lấy từ API (job và step), không đoán từ log. Hai job tổng hợp \"CI required\" và \"Security required\" bị loại khỏi danh sách bước vì chúng chỉ đỏ khi một bước khác đỏ.",
+  "identified": [
+   {
+    "d": "11-12/07",
+    "t": "ba run đầu tiên trên main đỏ với \"Multiple versions of pnpm specified\" (pnpm bị khai báo hai nơi)."
+   },
+   {
+    "d": "13/07",
+    "t": "32 run đỏ trong một ngày (nhiều nhất), khớp chuỗi sửa CI và Security trong sổ. Cùng ngày: Dependency review không chạy vì repo chưa bật Dependency graph, và GitHub trả 503 \"Service Unavailable\" khi tải action."
+   },
+   {
+    "d": "27/07",
+    "t": "Docker Hub timeout khi pull image ở CI, và bước smoke /health/ready của Hosted release đỏ một lần."
+   },
+   {
+    "d": "sau 14/08",
+    "t": "không còn run đỏ nào từ nhánh của bạn. Các run đỏ còn lại là PR của Dependabot, fail ở preflight vì ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION (pnpm từ chối bản phát hành quá mới)."
+   },
+   {
+    "d": "CodeQL",
+    "t": "2 cảnh báo cùng quy tắc js/loop-bound-injection mức cao: #1 ở palm-match.hash.ts đã fixed 17/07; #9 ở common/hash/fnv1a.ts còn mở từ 16/07. Dependabot security alerts: 0."
+   },
+   {
+    "d": "lưu ý",
+    "t": "GitHub xoá log Actions sau 90 ngày, log ngày 11/07 hết hạn ngay trong hôm nay. Bản tóm tắt job/step và log lỗi đã được lưu lại khi phân tích."
+   }
+  ]
+ },
+ "span": "10/07/2026 → 09/10/2026 (3 tháng)",
+ "head": "d3cb28c",
+ "generated": "tạo 14/10/2026 08:11 (+07)",
+ "raw": 130,
+ "sources": [
+  {
+   "big": "181 → 141 commit",
+   "text": "Mọi nhánh → thay đổi duy nhất sau khi bỏ 11 merge, 3 stash, 11 bot dependabot và bản trùng do rebase. 45 commit kiểu sửa lỗi (31 fix:, 1 revert, 13 harden/stabilize nhập nhằng)."
+  },
+  {
+   "big": "76 PR",
+   "text": "57 do người viết (13 tiêu đề fix), 12 đang mở, 0 issue. Thân commit và PR phần lớn rỗng hoặc là template nên cách sửa phải lấy từ diff và phiên làm việc."
+  },
+  {
+   "big": "25 thread Codex",
+   "text": "14/08 → 09/10, khoảng 472 triệu token, 110 lượt hoàn tất và 8 lượt bị ngắt. Bộ nhớ tự động của Codex rỗng (memories_1.sqlite: 0 dòng)."
+  },
+  {
+   "big": "5 phiên Claude",
+   "text": "04/10 → 09/10 (65 MB) và 3 note memory về dự án (service-map, nhánh multi-pod, chi phí). Lịch sử Claude trước 04/10 không nằm trên máy này."
+  },
+  {
+   "big": "11 bài học",
+   "text": "LRN-2026-001 đến 011 trong lessons-registry, cộng 20 file review/plan trong docs/plans và memory khởi động project-memory.md."
+  },
+  {
+   "big": "360 run CI",
+   "text": "GitHub Actions (CI, Security, Hosted release): 132 đỏ, trong đó 81/286 từ nhánh của bạn và 51/74 từ PR Dependabot. 2 cảnh báo CodeQL, 0 cảnh báo Dependabot."
+  }
+ ],
+ "playbook": [
+  {
+   "k": "tái hiện",
+   "t": "Tái hiện trên hạ tầng thật rồi mới sửa, kèm test",
+   "parts": [
+    {
+     "s": "Lỗi race và trùng event được dựng lại rồi mới sửa. Relay realtime gửi trùng theo số pod có test hai pod chạy mã thật của adapter Redis và một case Redis thật, đã xác nhận đỏ khi bỏ fix. View count cộng đôi được tái hiện bằng lỗi \"current transaction is aborted\" trên Postgres thật. JWT trùng trong cùng giây có test riêng. "
+    },
+    {
+     "b": "30 trên 102 vấn đề có test hoặc guard đi kèm."
+    }
+   ]
+  },
+  {
+   "k": "guard",
+   "t": "Biến lỗi CI thành cổng chặn",
+   "parts": [
+    {
+     "s": "Sau mỗi lần CI đỏ, cái sai được đưa vào guard: ci:preflight chạy container Node 22 sạch trước khi push, watchdog theo từng stage thay cho wrapper 45 giây, guard migration bất biến, test quét cấu hình theo máy, ManagedInterval cho job định kỳ. "
+    },
+    {
+     "b": "16 vấn đề xử lý bằng chỉnh CI hoặc cổng chất lượng."
+    }
+   ]
+  },
+  {
+   "k": "windows",
+   "t": "Windows: chuẩn hoá thay vì né",
+   "parts": [
+    {
+     "s": "Chuỗi lỗi ngày 14/08 được xử lý bằng shim cho .cmd, resolver Jest riêng, chuẩn hoá path POSIX trong test và bỏ qua stage Linux-only trên host Windows (vẫn chạy trong container sạch), không tắt gate. "
+    }
+   ]
+  },
+  {
+   "k": "cấu hình",
+   "t": "Cấu hình và deploy",
+   "parts": [
+    {
+     "s": "Lỗi môi trường xử lý ở cấu hình: biến production, avatar CDN giả đổi thành SVG local, bundleId Apple bắt buộc khi verifier là store. Riêng lệch phiên bản deploy (route profile 404) mới dừng ở khuyến nghị redeploy, chưa thấy bằng chứng đã làm. "
+    },
+    {
+     "b": "13 vấn đề dùng env-config, 2 dùng redeploy."
+    }
+   ]
+  },
+  {
+   "k": "ghi lại",
+   "t": "Ghi bài học để lỗi không quay lại",
+   "parts": [
+    {
+     "s": "Bài học vào lessons-registry (11 mục, mỗi mục có guard và bằng chứng), quyết định lớn vào ADR, và lỗi quy trình của agent thành quy tắc: tối đa 2 sub-agent, trích xuất tất định trước, ghi kết quả từng phần. "
+    },
+    {
+     "b": "10 vấn đề có tài liệu thiết kế/ADR/bài học, 19 có quy tắc quy trình."
+    }
+   ]
+  },
+  {
+   "k": "còn lại",
+   "t": "Chưa xử lý",
+   "parts": [
+    {
+     "s": "6 quan sát audit chưa xác nhận, 1 giới hạn đã biết cần quyết định sản phẩm (advisory lock, outbox), chưa bắt buộc required checks, OTP trả mã trong response, lệch phiên bản deploy production, guest reload mất device token, hai nhóm test timeout trên Windows và Core API production crash lúc boot. "
+    },
+    {
+     "b": "16 vấn đề, chưa thấy commit sửa."
+    }
+   ]
+  }
+ ],
+ "method": [
+  "Nguồn: 181 commit, 76 PR, 501 run GitHub Actions và cảnh báo CodeQL, lessons-registry và docs/plans, 25 thread Codex (đọc từ thread_items trong SQLite), 5 phiên Claude cùng memory. Số liệu git và CI dựng bằng script, không qua mô hình.",
+  "Bảy agent (tối đa hai chạy cùng lúc, đúng AGENTS.md) đọc các gói bằng chứng dựng sẵn và trích 130 bản ghi vấn đề thô. Chi phí: khoảng 528 nghìn token, 3 phút 40 giây.",
+  "Gộp trùng giữa nguồn thành 108 dòng: 102 vấn đề và 6 báo động giả. Bảy bản ghi thô bị loại hoặc tách: 2 bản ghi tổng quát trùng với bản ghi chi tiết, 1 đề xuất tối ưu, 2 mục cá nhân hoá terminal, 1 review FAIL không có chi tiết, 1 gói 6 quan sát được tách thành 6 dòng. Bổ sung thủ công 4 dòng từ lịch sử CI/CodeQL và 3 gotcha từ memory.",
+  "Kiểm chứng tự động: 274/275 tham chiếu tồn tại (một commit cũ nêu trong lessons-registry đã không còn trong lịch sử) và 168/170 trích dẫn khớp nguyên văn với nguồn. Tám commit cốt lõi được đối chiếu tay với diff.",
+  "Không tính: tính năng mới, hỏi đáp, lệnh thăm dò thất bại, 19 golden-bug fixtures (bài mẫu cho review, không phải sự cố), và rủi ro scale lý thuyết trong capacity plan.",
+  "Phân loại: \"lỗi / sự cố thực tế\" là thứ đã làm hỏng build, CI, deploy hoặc hành vi; \"thiết kế · quy trình · quan sát\" gồm lỗi thiết kế, sai sót quy trình và công cụ AI, và quan sát từ đọc code chưa tái hiện."
+ ],
+ "limits": [
+  "Phiên Claude/Codex trước 13/08 không còn nguồn nào (máy cũ đã cài lại, backup không chứa dự án này), nên tháng 7 chỉ dựa vào git, PR, docs và lịch sử CI. Lịch sử GitHub Actions bù một phần: nhánh của chủ repo có 74/219 run đỏ trong tháng đó.",
+  "Tháng 7 chỉ có git và tài liệu làm nguồn, tháng 8 có log Codex chi tiết, nên so sánh giữa các tháng bị lệch về phía tháng 8.",
+  "Số đếm phụ thuộc cách gộp. Gộp theo nguyên nhân gốc (cả chuỗi lỗi Windows thành một) sẽ ít hơn, tách theo lỗi con sẽ nhiều hơn.",
+  "Đây là phân tích tĩnh, không chạy lại test hay tái hiện lỗi. Sáu quan sát audit chưa xác nhận ở runtime. Agent trích xuất có thể diễn giải sai nguyên nhân; bằng chứng được đối chiếu tự động nhưng từng nhận định không được kiểm toán lại toàn bộ.",
+  "Sổ được cập nhật đến commit d3cb28c (10/10/2026) của nhánh fix/multi-pod-readiness; tại thời điểm dựng trang không có commit nào mới hơn."
+ ],
+ "foot": "Dữ liệu: repo ducmanh001/litmatch @ d3cb28c, SQLite của Codex, transcript Claude. Sổ đầy đủ, không ẩn mục nào (kể cả các mục bảo mật và production đang mở), công khai trên GitHub Pages."
+}

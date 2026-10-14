@@ -1,0 +1,3974 @@
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/roadmap.md -->
+
+# Roadmap · Litmatch Error History
+
+id: roadmap
+site: history
+updated: 2026-10-14; ledger covers repo ducmanh001/litmatch up to d3cb28c
+
+"Roadmap" của trang này: **A. lộ trình đọc**, **B. việc còn mở xếp theo loại** (sổ lỗi công khai đầy đủ, kể cả mục bảo mật và production đang mở), **C. bài học để không lặp lại**, **D. lộ trình dự án** (ở Atlas).
+Tệp máy đọc: [llms.txt](llms.txt) · [sitemap.xml](sitemap.xml) · [search-index.json](search-index.json) · [json/issues.json](json/issues.json).
+
+## A. Lộ trình đọc
+
+| Câu hỏi | Mở |
+|---|---|
+| Một vấn đề cụ thể (P0xx) | issues/P0xx.md (problem, root cause, resolution, evidence) |
+| Các vấn đề của một khu vực | issues/<area>.md, danh sách khu vực ở mục B3 |
+| Còn gì đang mở | mục B1 và B2 của trang này |
+| Bài học và cách đã xử lý | summary.md (playbook), mục C |
+| Số liệu CI | summary.md (GitHub Actions) |
+| Muốn tìm theo từ khoá | search.html, search-index.json |
+| Khu vực này nằm ở module nào, API nào | https://ducmanh001.github.io/litmatch-atlas-demo/pack/modules/index.md |
+
+## B. Việc còn mở
+
+Loại A = lỗi / sự cố thực tế; B = thiết kế, quy trình, quan sát từ đọc code; C = báo động giả.
+
+### B1. Đang mở hoặc đang xử lý (16)
+
+| id | trạng thái | loại | khu vực | ngày | vấn đề |
+|---|---|---|---|---|---|
+| [P085](issues/P085.md) | open | A | frontend-ux | 2026-10-09 | Guest reload mất device token → Matching 401 |
+| [P078](issues/P078.md) | open | A | dependencies | 2026-09-09 | PR Dependabot đỏ vì chính sách minimumReleaseAge của pnpm |
+| [P077](issues/P077.md) | open | A | windows-toolchain | 2026-09-03 | Test hard-kill của run-stage lỗi trên Windows (exit 124) |
+| [P075](issues/P075.md) | open | A | auth-security | 2026-09-03 | OTP trả mã ngay trong response khi production bật OTP |
+| [P074](issues/P074.md) | in-progress | A | deploy-config | 2026-08-21 | Core API production crash lúc boot (media storage dev / thiếu biến R2) |
+| [P065](issues/P065.md) | open | A | deploy-config | 2026-08-19 | Production chạy bản cũ: route profile 404, thông báo Facebook cũ |
+| [P063](issues/P063.md) | open | A | ci-cd | 2026-08-14 | Test frontend (admin/web) timeout lặp lại |
+| [P012](issues/P012.md) | open | A | auth-security | 2026-07-16 | CodeQL: loop-bound-injection (high) ở common/hash/fnv1a.ts còn mở |
+| [P104](issues/P104.md) | open | B | other | 2026-10-09 | soul-match end phát lại soul.ended khi replay |
+| [P103](issues/P103.md) | open | B | other | 2026-10-09 | Phân trang cursor video-queue admin (pending_review tăng dần nhưng cursor dùng less-than; suy luận) |
+| [P102](issues/P102.md) | open | B | other | 2026-10-09 | Comment k8s lỗi thời |
+| [P101](issues/P101.md) | open | B | other | 2026-10-09 | Lời mời hết hạn kiểu lazy-expire không được persist |
+| [P100](issues/P100.md) | open | B | other | 2026-10-09 | getHiddenUserIds không có cửa sổ thời gian (cần quyết định sản phẩm) |
+| [P099](issues/P099.md) | open | B | other | 2026-10-09 | Ranked sort loại hàng có rankScore IS NULL |
+| [P094](issues/P094.md) | open | B | matching | 2026-10-09 | Giới hạn đã biết: advisory lock Palm/Movie Match, outbox chưa có consumer/retention |
+| [P055](issues/P055.md) | open | B | ci-cd | 2026-08-14 | Chưa bắt buộc required checks: PR vẫn merge được khi CI đỏ |
+
+### B2. Đã giảm nhẹ, chưa dứt điểm (8)
+
+| id | trạng thái | loại | khu vực | ngày | vấn đề |
+|---|---|---|---|---|---|
+| [P092](issues/P092.md) | mitigated | A | windows-toolchain | 2026-10-09 | Windows thiếu zip/unzip nên docs:check không chạy |
+| [P015](issues/P015.md) | mitigated | A | realtime-gateway | 2026-07-18 | Socket reconnect không khôi phục state bền (LRN-005) |
+| [P011](issues/P011.md) | mitigated | A | database-concurrency | 2026-07-13 | Transaction Postgres bị aborted sau unique violation (LRN-002) |
+| [P072](issues/P072.md) | mitigated | B | windows-toolchain | 2026-08-20 | Windows: Nx build lỗi 1314 + runner timeout (exit 124) |
+| [P061](issues/P061.md) | mitigated | B | observability | 2026-08-14 | Lỗi TS ở tsconfig.spec không làm build fail |
+| [P051](issues/P051.md) | mitigated | B | ai-agent-process | 2026-08-14 | ci:preflight treo làm mất thay đổi chưa commit |
+| [P050](issues/P050.md) | mitigated | B | ai-agent-process | 2026-08-14 | Không push được vì môi trường (thiếu gh, Docker/WSL2, hook) |
+| [P016](issues/P016.md) | mitigated | B | ai-agent-process | 2026-07-18 | PASS cục bộ bị hiểu thành PASS toàn repo (LRN-006) |
+
+### B3. Theo khu vực (không tính báo động giả)
+
+| khu vực | tổng | đang mở/đang xử lý |
+|---|---|---|
+| [ci-cd](issues/ci-cd.md) | 22 | 2 |
+| [ai-agent-process](issues/ai-agent-process.md) | 13 | 0 |
+| [auth-security](issues/auth-security.md) | 10 | 2 |
+| [frontend-ux](issues/frontend-ux.md) | 9 | 1 |
+| [windows-toolchain](issues/windows-toolchain.md) | 8 | 1 |
+| [deploy-config](issues/deploy-config.md) | 7 | 2 |
+| [other](issues/other.md) | 7 | 6 |
+| [matching](issues/matching.md) | 6 | 1 |
+| [database-concurrency](issues/database-concurrency.md) | 5 | 0 |
+| [economy-payment](issues/economy-payment.md) | 3 | 0 |
+| [observability](issues/observability.md) | 3 | 0 |
+| [short-video](issues/short-video.md) | 3 | 0 |
+| [realtime-gateway](issues/realtime-gateway.md) | 2 | 0 |
+| [dependencies](issues/dependencies.md) | 2 | 1 |
+| [docs-tooling](issues/docs-tooling.md) | 2 | 0 |
+
+## C. Bài học để không lặp lại
+
+- **Tái hiện trên hạ tầng thật rồi mới sửa, kèm test**: Lỗi race và trùng event được dựng lại rồi mới sửa. Relay realtime gửi trùng theo số pod có test hai pod chạy mã thật của adapter Redis và một case Redis thật, đã xác nhận đỏ khi bỏ fix. View count cộng đôi được tái hiện bằng lỗi "current transaction is aborted" trên Postgres thật. JWT trùng trong cùng giây có test riêng. 30 trên 102 vấn đề có test hoặc guard đi kèm.
+- **Biến lỗi CI thành cổng chặn**: Sau mỗi lần CI đỏ, cái sai được đưa vào guard: ci:preflight chạy container Node 22 sạch trước khi push, watchdog theo từng stage thay cho wrapper 45 giây, guard migration bất biến, test quét cấu hình theo máy, ManagedInterval cho job định kỳ. 16 vấn đề xử lý bằng chỉnh CI hoặc cổng chất lượng.
+- **Windows: chuẩn hoá thay vì né**: Chuỗi lỗi ngày 14/08 được xử lý bằng shim cho .cmd, resolver Jest riêng, chuẩn hoá path POSIX trong test và bỏ qua stage Linux-only trên host Windows (vẫn chạy trong container sạch), không tắt gate.
+- **Cấu hình và deploy**: Lỗi môi trường xử lý ở cấu hình: biến production, avatar CDN giả đổi thành SVG local, bundleId Apple bắt buộc khi verifier là store. Riêng lệch phiên bản deploy (route profile 404) mới dừng ở khuyến nghị redeploy, chưa thấy bằng chứng đã làm. 13 vấn đề dùng env-config, 2 dùng redeploy.
+- **Ghi bài học để lỗi không quay lại**: Bài học vào lessons-registry (11 mục, mỗi mục có guard và bằng chứng), quyết định lớn vào ADR, và lỗi quy trình của agent thành quy tắc: tối đa 2 sub-agent, trích xuất tất định trước, ghi kết quả từng phần. 10 vấn đề có tài liệu thiết kế/ADR/bài học, 19 có quy tắc quy trình.
+- **Chưa xử lý**: 6 quan sát audit chưa xác nhận, 1 giới hạn đã biết cần quyết định sản phẩm (advisory lock, outbox), chưa bắt buộc required checks, OTP trả mã trong response, lệch phiên bản deploy production, guest reload mất device token, hai nhóm test timeout trên Windows và Core API production crash lúc boot. 16 vấn đề, chưa thấy commit sửa.
+
+## D. Lộ trình dự án
+
+Giai đoạn, quy mô S0-S8, ưu tiên P0-P2 và quyết định đã hoãn: [roadmap của Atlas](https://ducmanh001.github.io/litmatch-atlas-demo/roadmap.md).
+
+Các trang cùng bộ: [Atlas](https://ducmanh001.github.io/litmatch-atlas-demo/) · [Service Map](https://ducmanh001.github.io/litmatch-service-map/) · [Error History](https://ducmanh001.github.io/litmatch-error-history/). Roadmap dự án và việc còn mở nằm ở [roadmap của Atlas](https://ducmanh001.github.io/litmatch-atlas-demo/roadmap.md).
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/summary.md -->
+
+# Error history summary
+
+id: summary
+span: 10/07/2026 → 09/10/2026 (3 tháng); tạo 14/10/2026 08:11 (+07); repo ducmanh001/litmatch @ d3cb28c
+rows: 108 (102 vấn đề thật, 6 báo động giả); raw records extracted: 130
+
+Loại A = lỗi / sự cố thực tế; B = thiết kế, quy trình, quan sát từ đọc code; C = báo động giả.
+
+## Counts
+
+- by status: fixed 78, open 15, mitigated 8, false-alarm 6, in-progress 1
+- by tier: A 66, B 36, C 6
+- by area: ci-cd 24, ai-agent-process 13, auth-security 12, frontend-ux 9, windows-toolchain 8, deploy-config 7, other 7, matching 6, database-concurrency 5, observability 4, economy-payment 3, realtime-gateway 3, short-video 3, dependencies 2, docs-tooling 2
+
+## GitHub Actions
+
+360 runs, 132 red (human 286/81, dependabot 74/51, bot 141/94; main 127/26). Peak 32 runs on 13/07; last human red 14/08. Per month: 2026-07 74/219, 2026-08 7/64, 2026-10 0/3.
+
+Failing steps: Frontend: contract, test, build, bundle audit (16); gitleaks quét lịch sử Git tìm secret (15); ESLint (nx run-many lint) (12); Preflight test + build (tương đương local) (9); Preflight chất lượng (format/lint) (7); Trivy: lỗ hổng/misconfig trong repo (6); Audit dependency mức high/critical (4); Trivy: quét runtime image (4).
+
+Lấy bằng gh từ 501 run (11/07 đến 09/10). Số đỏ lấy từ API (job và step), không đoán từ log. Hai job tổng hợp "CI required" và "Security required" bị loại khỏi danh sách bước vì chúng chỉ đỏ khi một bước khác đỏ.
+
+## Sources
+
+- **181 → 141 commit**: Mọi nhánh → thay đổi duy nhất sau khi bỏ 11 merge, 3 stash, 11 bot dependabot và bản trùng do rebase. 45 commit kiểu sửa lỗi (31 fix:, 1 revert, 13 harden/stabilize nhập nhằng).
+- **76 PR**: 57 do người viết (13 tiêu đề fix), 12 đang mở, 0 issue. Thân commit và PR phần lớn rỗng hoặc là template nên cách sửa phải lấy từ diff và phiên làm việc.
+- **25 thread Codex**: 14/08 → 09/10, khoảng 472 triệu token, 110 lượt hoàn tất và 8 lượt bị ngắt. Bộ nhớ tự động của Codex rỗng (memories_1.sqlite: 0 dòng).
+- **5 phiên Claude**: 04/10 → 09/10 (65 MB) và 3 note memory về dự án (service-map, nhánh multi-pod, chi phí). Lịch sử Claude trước 04/10 không nằm trên máy này.
+- **11 bài học**: LRN-2026-001 đến 011 trong lessons-registry, cộng 20 file review/plan trong docs/plans và memory khởi động project-memory.md.
+- **360 run CI**: GitHub Actions (CI, Security, Hosted release): 132 đỏ, trong đó 81/286 từ nhánh của bạn và 51/74 từ PR Dependabot. 2 cảnh báo CodeQL, 0 cảnh báo Dependabot.
+
+## Playbook (how problems were solved)
+
+- **Tái hiện trên hạ tầng thật rồi mới sửa, kèm test** (tái hiện): Lỗi race và trùng event được dựng lại rồi mới sửa. Relay realtime gửi trùng theo số pod có test hai pod chạy mã thật của adapter Redis và một case Redis thật, đã xác nhận đỏ khi bỏ fix. View count cộng đôi được tái hiện bằng lỗi "current transaction is aborted" trên Postgres thật. JWT trùng trong cùng giây có test riêng. 30 trên 102 vấn đề có test hoặc guard đi kèm.
+- **Biến lỗi CI thành cổng chặn** (guard): Sau mỗi lần CI đỏ, cái sai được đưa vào guard: ci:preflight chạy container Node 22 sạch trước khi push, watchdog theo từng stage thay cho wrapper 45 giây, guard migration bất biến, test quét cấu hình theo máy, ManagedInterval cho job định kỳ. 16 vấn đề xử lý bằng chỉnh CI hoặc cổng chất lượng.
+- **Windows: chuẩn hoá thay vì né** (windows): Chuỗi lỗi ngày 14/08 được xử lý bằng shim cho .cmd, resolver Jest riêng, chuẩn hoá path POSIX trong test và bỏ qua stage Linux-only trên host Windows (vẫn chạy trong container sạch), không tắt gate.
+- **Cấu hình và deploy** (cấu hình): Lỗi môi trường xử lý ở cấu hình: biến production, avatar CDN giả đổi thành SVG local, bundleId Apple bắt buộc khi verifier là store. Riêng lệch phiên bản deploy (route profile 404) mới dừng ở khuyến nghị redeploy, chưa thấy bằng chứng đã làm. 13 vấn đề dùng env-config, 2 dùng redeploy.
+- **Ghi bài học để lỗi không quay lại** (ghi lại): Bài học vào lessons-registry (11 mục, mỗi mục có guard và bằng chứng), quyết định lớn vào ADR, và lỗi quy trình của agent thành quy tắc: tối đa 2 sub-agent, trích xuất tất định trước, ghi kết quả từng phần. 10 vấn đề có tài liệu thiết kế/ADR/bài học, 19 có quy tắc quy trình.
+- **Chưa xử lý** (còn lại): 6 quan sát audit chưa xác nhận, 1 giới hạn đã biết cần quyết định sản phẩm (advisory lock, outbox), chưa bắt buộc required checks, OTP trả mã trong response, lệch phiên bản deploy production, guest reload mất device token, hai nhóm test timeout trên Windows và Core API production crash lúc boot. 16 vấn đề, chưa thấy commit sửa.
+
+## Method
+
+- Nguồn: 181 commit, 76 PR, 501 run GitHub Actions và cảnh báo CodeQL, lessons-registry và docs/plans, 25 thread Codex (đọc từ thread_items trong SQLite), 5 phiên Claude cùng memory. Số liệu git và CI dựng bằng script, không qua mô hình.
+- Bảy agent (tối đa hai chạy cùng lúc, đúng AGENTS.md) đọc các gói bằng chứng dựng sẵn và trích 130 bản ghi vấn đề thô. Chi phí: khoảng 528 nghìn token, 3 phút 40 giây.
+- Gộp trùng giữa nguồn thành 108 dòng: 102 vấn đề và 6 báo động giả. Bảy bản ghi thô bị loại hoặc tách: 2 bản ghi tổng quát trùng với bản ghi chi tiết, 1 đề xuất tối ưu, 2 mục cá nhân hoá terminal, 1 review FAIL không có chi tiết, 1 gói 6 quan sát được tách thành 6 dòng. Bổ sung thủ công 4 dòng từ lịch sử CI/CodeQL và 3 gotcha từ memory.
+- Kiểm chứng tự động: 274/275 tham chiếu tồn tại (một commit cũ nêu trong lessons-registry đã không còn trong lịch sử) và 168/170 trích dẫn khớp nguyên văn với nguồn. Tám commit cốt lõi được đối chiếu tay với diff.
+- Không tính: tính năng mới, hỏi đáp, lệnh thăm dò thất bại, 19 golden-bug fixtures (bài mẫu cho review, không phải sự cố), và rủi ro scale lý thuyết trong capacity plan.
+- Phân loại: "lỗi / sự cố thực tế" là thứ đã làm hỏng build, CI, deploy hoặc hành vi; "thiết kế · quy trình · quan sát" gồm lỗi thiết kế, sai sót quy trình và công cụ AI, và quan sát từ đọc code chưa tái hiện.
+
+## Limits
+
+- Phiên Claude/Codex trước 13/08 không còn nguồn nào (máy cũ đã cài lại, backup không chứa dự án này), nên tháng 7 chỉ dựa vào git, PR, docs và lịch sử CI. Lịch sử GitHub Actions bù một phần: nhánh của chủ repo có 74/219 run đỏ trong tháng đó.
+- Tháng 7 chỉ có git và tài liệu làm nguồn, tháng 8 có log Codex chi tiết, nên so sánh giữa các tháng bị lệch về phía tháng 8.
+- Số đếm phụ thuộc cách gộp. Gộp theo nguyên nhân gốc (cả chuỗi lỗi Windows thành một) sẽ ít hơn, tách theo lỗi con sẽ nhiều hơn.
+- Đây là phân tích tĩnh, không chạy lại test hay tái hiện lỗi. Sáu quan sát audit chưa xác nhận ở runtime. Agent trích xuất có thể diễn giải sai nguyên nhân; bằng chứng được đối chiếu tự động nhưng từng nhận định không được kiểm toán lại toàn bộ.
+- Sổ được cập nhật đến commit d3cb28c (10/10/2026) của nhánh fix/multi-pod-readiness; tại thời điểm dựng trang không có commit nào mới hơn.
+
+Dữ liệu: repo ducmanh001/litmatch @ d3cb28c, SQLite của Codex, transcript Claude. Sổ đầy đủ, không ẩn mục nào (kể cả các mục bảo mật và production đang mở), công khai trên GitHub Pages.
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/index.md -->
+
+# Error history ledger
+
+id: issues:index
+rows: 108 (full ledger, nothing withheld; open findings included)
+
+Loại A = lỗi / sự cố thực tế; B = thiết kế, quy trình, quan sát từ đọc code; C = báo động giả.
+
+| id | status | tier | area | date | title |
+|---|---|---|---|---|---|
+| [P001](P001.md) | fixed | A | economy-payment | 2026-07-10 | Guard ledger chặn nhầm bút toán đảo (refund/chargeback) |
+| [P002](P002.md) | fixed | A | ci-cd | 2026-07-11 | CI main đỏ ngay từ commit đầu: "Multiple versions of pnpm specified" |
+| [P003](P003.md) | fixed | B | ai-agent-process | 2026-07-11 | Commit "harden phase 2A" quá lớn phải revert khỏi main |
+| [P004](P004.md) | fixed | B | ai-agent-process | 2026-07-12 | Adapter CLAUDE.md / skills lệch bản canonical (symlink tay) |
+| [P005](P005.md) | fixed | A | auth-security | 2026-07-13 | CodeQL: loop-bound-injection (high) ở palm-match.hash.ts |
+| [P006](P006.md) | fixed | A | frontend-ux | 2026-07-13 | Swagger thiếu cursor pagination → client sinh kiểu never |
+| [P007](P007.md) | fixed | A | ci-cd | 2026-07-13 | CI hosted lệch CI local (runner sạch) |
+| [P008](P008.md) | fixed | A | auth-security | 2026-07-13 | CodeQL: log rõ thông tin nhạy cảm ở runner CI local |
+| [P009](P009.md) | fixed | A | auth-security | 2026-07-13 | Cookie refresh token: 2 lỗi chỉ lộ khi test trình duyệt thật |
+| [P010](P010.md) | fixed | B | matching | 2026-07-13 | Bộ lọc vùng Discovery cho độ chính xác giả (LRN-001) |
+| [P011](P011.md) | mitigated | A | database-concurrency | 2026-07-13 | Transaction Postgres bị aborted sau unique violation (LRN-002) |
+| [P012](P012.md) | open | A | auth-security | 2026-07-16 | CodeQL: loop-bound-injection (high) ở common/hash/fnv1a.ts còn mở |
+| [P013](P013.md) | fixed | A | database-concurrency | 2026-07-18 | Job định kỳ chồng lấp khi tick chậm/reject (LRN-003) |
+| [P014](P014.md) | fixed | A | deploy-config | 2026-07-18 | Cấu hình theo máy (tunnel/IP/credential) nằm trong repo (LRN-004) |
+| [P015](P015.md) | mitigated | A | realtime-gateway | 2026-07-18 | Socket reconnect không khôi phục state bền (LRN-005) |
+| [P016](P016.md) | mitigated | B | ai-agent-process | 2026-07-18 | PASS cục bộ bị hiểu thành PASS toàn repo (LRN-006) |
+| [P017](P017.md) | fixed | A | observability | 2026-07-18 | OTLP exporter nhận endpoint Prometheus remote_write (LRN-007) |
+| [P018](P018.md) | fixed | A | auth-security | 2026-07-18 | JWT access token trùng nhau khi cấp trong cùng giây (LRN-010) |
+| [P019](P019.md) | fixed | A | economy-payment | 2026-07-18 | Chữ ký DisabledIapVerifier không khớp port |
+| [P020](P020.md) | fixed | B | other | 2026-07-18 | Vòng phụ thuộc Soul DTO ↔ service |
+| [P021](P021.md) | fixed | A | deploy-config | 2026-07-20 | Redis TLS rediss:// có nguy cơ bị Joi từ chối khi boot |
+| [P022](P022.md) | fixed | A | ci-cd | 2026-07-22 | CVE ở runtime image mà pre-push local bỏ sót |
+| [P023](P023.md) | fixed | A | ci-cd | 2026-07-22 | Integration test race do schema/Redis dùng chung |
+| [P024](P024.md) | fixed | A | ci-cd | 2026-07-22 | Build web OpenNext/ESM hỏng, phải sửa 3 lần |
+| [P025](P025.md) | fixed | A | dependencies | 2026-07-22 | Audit dependency báo lỗi brace-expansion |
+| [P026](P026.md) | fixed | A | deploy-config | 2026-07-24 | Production thiếu biến môi trường đăng nhập |
+| [P027](P027.md) | fixed | A | ci-cd | 2026-07-24 | CI quality-result đỏ do comment/param env trong workflow |
+| [P028](P028.md) | fixed | A | auth-security | 2026-07-24 | Đăng nhập SMS "accepted" của admin còn bật ở production |
+| [P029](P029.md) | fixed | B | ci-cd | 2026-07-30 | Nhiều đường bypass gate CI (hook local / GitHub / hosted lệch nhau) |
+| [P030](P030.md) | fixed | B | docs-tooling | 2026-07-30 | Reviewer độc lập tìm ra 3 vấn đề khi tổ chức lại tài liệu |
+| [P031](P031.md) | fixed | A | observability | 2026-08-02 | Wrapper OTel cho OpenNext Cloudflare handler lỗi sau khi thêm Loki |
+| [P032](P032.md) | fixed | A | matching | 2026-08-12 | Lỗi boot production khi chạy profile local (Matching capability) |
+| [P033](P033.md) | fixed | A | database-concurrency | 2026-08-13 | Khe hở đồng thời ở feed / party-room / safety |
+| [P034](P034.md) | fixed | A | matching | 2026-08-14 | Matching trả 400 (useDiamond) + nút CTA sai trạng thái |
+| [P035](P035.md) | fixed | A | ci-cd | 2026-08-14 | Generated client lệch OpenAPI làm CI đỏ (#188) |
+| [P036](P036.md) | fixed | A | windows-toolchain | 2026-08-14 | Windows: hook/runner không chạy được pnpm (.cmd: 127 / EINVAL) |
+| [P037](P037.md) | fixed | A | windows-toolchain | 2026-08-14 | Windows/Docker: CRLF + symlink thành file thường làm format/agent:check đỏ |
+| [P038](P038.md) | fixed | A | windows-toolchain | 2026-08-14 | Windows: Jest không chạy (thiếu VC++ runtime, resolver native) |
+| [P039](P039.md) | fixed | A | windows-toolchain | 2026-08-14 | Pre-push trên Windows đỏ giả do giả định POSIX / công cụ Linux-only |
+| [P040](P040.md) | fixed | B | ci-cd | 2026-08-14 | Watchdog CI quá thô cắt gate giữa chừng (LRN-008) |
+| [P041](P041.md) | fixed | A | ci-cd | 2026-08-14 | Timeout cứng quá chặt / chạy song song làm test flaky |
+| [P042](P042.md) | fixed | A | ci-cd | 2026-08-14 | Test gia hạn lease bị đói timer khi chạy cạnh pool lớn (LRN-009) |
+| [P043](P043.md) | fixed | B | ci-cd | 2026-08-14 | Nx cache bật cho test có state → có thể trả kết quả cũ |
+| [P044](P044.md) | fixed | A | ci-cd | 2026-08-14 | E2E local: server cũ còn sống, reset DB chồng, thiếu baseUrl |
+| [P045](P045.md) | fixed | A | ci-cd | 2026-08-14 | Lint: config E2E import vi phạm ranh giới Nx |
+| [P046](P046.md) | fixed | A | matching | 2026-08-14 | Guest bấm Matching → 401 vì thiếu X-Guest-Device-Token |
+| [P047](P047.md) | fixed | A | deploy-config | 2026-08-14 | Ảnh avatar trỏ cdn.litmatch.example không phân giải DNS |
+| [P048](P048.md) | fixed | A | frontend-ux | 2026-08-14 | Guest thấy nút đăng bài/like/comment nhưng backend luôn 403 |
+| [P049](P049.md) | fixed | A | frontend-ux | 2026-08-14 | Thông báo Facebook gõ sai "ckhả dụng" |
+| [P050](P050.md) | mitigated | B | ai-agent-process | 2026-08-14 | Không push được vì môi trường (thiếu gh, Docker/WSL2, hook) |
+| [P051](P051.md) | mitigated | B | ai-agent-process | 2026-08-14 | ci:preflight treo làm mất thay đổi chưa commit |
+| [P052](P052.md) | fixed | B | database-concurrency | 2026-08-14 | Sửa nhầm migration đã commit (guard bất biến chặn) |
+| [P053](P053.md) | fixed | B | ci-cd | 2026-08-14 | Conflict nhánh matching với main |
+| [P054](P054.md) | fixed | B | ci-cd | 2026-08-14 | Hook pre-push chỉ chạy affected nên lỗi lọt lên CI |
+| [P055](P055.md) | open | B | ci-cd | 2026-08-14 | Chưa bắt buộc required checks: PR vẫn merge được khi CI đỏ |
+| [P056](P056.md) | false-alarm | C | ci-cd | 2026-08-14 | Báo động giả: push nhánh không thấy CI chạy |
+| [P057](P057.md) | fixed | A | frontend-ux | 2026-08-14 | Màn matching PC: CTA tĩnh, không có trạng thái chọn |
+| [P058](P058.md) | fixed | A | frontend-ux | 2026-08-14 | Nhiều nút action thiếu cursor pointer |
+| [P059](P059.md) | fixed | A | frontend-ux | 2026-08-14 | Test Feed đỏ do thiếu setup session |
+| [P060](P060.md) | fixed | A | windows-toolchain | 2026-08-14 | tsconfig baseUrl deprecated → mất alias lúc runtime |
+| [P061](P061.md) | mitigated | B | observability | 2026-08-14 | Lỗi TS ở tsconfig.spec không làm build fail |
+| [P062](P062.md) | fixed | A | ci-cd | 2026-08-14 | Prettier lỗi bảng markdown → CI #189 đỏ |
+| [P063](P063.md) | open | A | ci-cd | 2026-08-14 | Test frontend (admin/web) timeout lặp lại |
+| [P064](P064.md) | fixed | A | ci-cd | 2026-08-19 | Container smoke Linux-only chạy trên Windows chặn push |
+| [P065](P065.md) | open | A | deploy-config | 2026-08-19 | Production chạy bản cũ: route profile 404, thông báo Facebook cũ |
+| [P066](P066.md) | fixed | B | economy-payment | 2026-08-19 | Hiểu sai luật cổng quà (follower/ngày vs người bắt chuyện lần đầu) |
+| [P067](P067.md) | fixed | A | frontend-ux | 2026-08-19 | Toast đỏ sai ngữ cảnh khi hồ sơ yêu cầu tặng quà |
+| [P068](P068.md) | fixed | B | database-concurrency | 2026-08-19 | Migration gộp gây phụ thuộc chéo + gate kiến trúc đỏ |
+| [P069](P069.md) | fixed | A | ci-cd | 2026-08-20 | Dry-run test rò cờ Nx cache làm pre-push fail |
+| [P070](P070.md) | fixed | A | frontend-ux | 2026-08-20 | Inbox không hiện hội thoại trực tiếp |
+| [P071](P071.md) | fixed | A | auth-security | 2026-08-20 | Cổng gọi điện có thể bypass sau khi block (bắt được khi tự review) |
+| [P072](P072.md) | mitigated | B | windows-toolchain | 2026-08-20 | Windows: Nx build lỗi 1314 + runner timeout (exit 124) |
+| [P073](P073.md) | false-alarm | C | ci-cd | 2026-08-20 | Báo động giả: clean container fail ở agent-check không có assertion |
+| [P074](P074.md) | in-progress | A | deploy-config | 2026-08-21 | Core API production crash lúc boot (media storage dev / thiếu biến R2) |
+| [P075](P075.md) | open | A | auth-security | 2026-09-03 | OTP trả mã ngay trong response khi production bật OTP |
+| [P076](P076.md) | fixed | B | deploy-config | 2026-09-03 | Rate limit trong bộ nhớ từng pod + trần kết nối Postgres |
+| [P077](P077.md) | open | A | windows-toolchain | 2026-09-03 | Test hard-kill của run-stage lỗi trên Windows (exit 124) |
+| [P078](P078.md) | open | A | dependencies | 2026-09-09 | PR Dependabot đỏ vì chính sách minimumReleaseAge của pnpm |
+| [P079](P079.md) | fixed | A | ci-cd | 2026-10-08 | Push bị GitHub từ chối 403 (sai tài khoản) |
+| [P080](P080.md) | fixed | B | ai-agent-process | 2026-10-08 | Chạm session limit vì workflow nhiều agent (đốt ~2,9M token) |
+| [P081](P081.md) | false-alarm | C | observability | 2026-10-09 | Báo động giả: /metrics trả 404 (đúng thiết kế OTLP) |
+| [P082](P082.md) | false-alarm | C | auth-security | 2026-10-09 | Báo động giả: Nearby 403 / Feed chặn guest là đúng chính sách |
+| [P083](P083.md) | false-alarm | C | realtime-gateway | 2026-10-09 | Báo động giả: Party media lỗi khi headless không cấp mic |
+| [P084](P084.md) | false-alarm | C | auth-security | 2026-10-09 | Báo động giả: throttle đăng nhập guest 5 lần/phút chặn retest |
+| [P085](P085.md) | open | A | frontend-ux | 2026-10-09 | Guest reload mất device token → Matching 401 |
+| [P086](P086.md) | fixed | A | realtime-gateway | 2026-10-09 | Relay realtime gửi trùng event theo số pod (LRN-011) |
+| [P087](P087.md) | fixed | A | auth-security | 2026-10-09 | Bỏ qua kiểm bundleId Apple khi env rỗng |
+| [P088](P088.md) | fixed | A | short-video | 2026-10-09 | View count video cộng đôi khi đồng thời |
+| [P089](P089.md) | fixed | A | short-video | 2026-10-09 | Sweeper video lỗi bị đói (lặp 200 hàng cũ nhất) |
+| [P090](P090.md) | fixed | A | matching | 2026-10-09 | Huỷ ván mini-game ghi đè ván đã resolved |
+| [P091](P091.md) | fixed | B | auth-security | 2026-10-09 | Xoay JWT_SECRET đăng xuất mọi người |
+| [P092](P092.md) | mitigated | A | windows-toolchain | 2026-10-09 | Windows thiếu zip/unzip nên docs:check không chạy |
+| [P093](P093.md) | fixed | A | docs-tooling | 2026-10-09 | Báo cáo bằng chứng generated bị stale |
+| [P094](P094.md) | open | B | matching | 2026-10-09 | Giới hạn đã biết: advisory lock Palm/Movie Match, outbox chưa có consumer/retention |
+| [P095](P095.md) | fixed | B | ai-agent-process | 2026-10-09 | Bước prune xoá nhầm 15 kết luận hợp lệ (pipeline service-map) |
+| [P096](P096.md) | fixed | B | ai-agent-process | 2026-10-09 | Heuristic độ phủ khớp đuôi đường dẫn ngắn → dương tính giả |
+| [P097](P097.md) | fixed | B | ai-agent-process | 2026-10-09 | Sửa script qua shell lồng quote làm hỏng regex; Workflow scriptPath bị từ chối |
+| [P098](P098.md) | fixed | B | ai-agent-process | 2026-10-09 | Báo cáo đầu chỉ là smoke test, bỏ sót lỗi profile |
+| [P099](P099.md) | open | B | other | 2026-10-09 | Ranked sort loại hàng có rankScore IS NULL |
+| [P100](P100.md) | open | B | other | 2026-10-09 | getHiddenUserIds không có cửa sổ thời gian (cần quyết định sản phẩm) |
+| [P101](P101.md) | open | B | other | 2026-10-09 | Lời mời hết hạn kiểu lazy-expire không được persist |
+| [P102](P102.md) | open | B | other | 2026-10-09 | Comment k8s lỗi thời |
+| [P103](P103.md) | open | B | other | 2026-10-09 | Phân trang cursor video-queue admin (pending_review tăng dần nhưng cursor dùng less-than; suy luận) |
+| [P104](P104.md) | open | B | other | 2026-10-09 | soul-match end phát lại soul.ended khi replay |
+| [P105](P105.md) | fixed | B | ai-agent-process | 2026-10-09 | Spec integration liệt kê migration tường minh: migration mới phải đăng ký ở 2 spec |
+| [P106](P106.md) | fixed | B | ai-agent-process | 2026-10-09 | git apply --unidiff-zero đặt sai vị trí hunk chèn thuần |
+| [P107](P107.md) | fixed | B | ai-agent-process | 2026-10-09 | File CRLF trong working tree: sửa bằng script phải giữ EOL |
+| [P108](P108.md) | fixed | A | short-video | 2026-10-09 | Replay upload-intent cấp lại URL sau khi video đã published/failed |
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P001.md -->
+
+# P001: Guard ledger chặn nhầm bút toán đảo (refund/chargeback)
+
+id: P001
+status: fixed
+tier: A · area: economy-payment · date: 2026-07-10 · confidence: high
+resolution type: code-fix, design-doc-adr
+
+## Problem
+
+CHECK (balance >= 0) ở DB và guard ledger.service chặn cả bút toán Reversal hợp lệ, nên refund/chargeback Apple/Google sau khi user đã tiêu diamond không ghi được.
+
+## Root cause
+
+Spec Economy giả định balance không bao giờ âm; gift 2 currency (DIA/PTS) cũng không cân được trong 1 cặp Nợ/Có.
+
+## Resolution
+
+Bỏ CHECK trong migration economy-ledger và wallet.entity; ledger.service cho riêng Reversal/Adjustment đẩy balance âm, vẫn chặn chi tiêu thường. Chốt gift 2 chân, thêm actor_user_id, bổ sung entity LedgerAccount vào docs.
+
+## Evidence
+
+- commit 57f04de — "CHECK (balance >= 0) ở DB + guard ledger.service chặn cả bút toán Reversal hợp lệ"
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/economy-payment.md](economy-payment.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P002.md -->
+
+# P002: CI main đỏ ngay từ commit đầu: "Multiple versions of pnpm specified"
+
+id: P002
+status: fixed
+tier: A · area: ci-cd · date: 2026-07-11 · confidence: medium
+resolution type: ci-config
+
+## Problem
+
+Ba run CI đầu tiên trên main (11-12/07) fail ở job verify với lỗi "Multiple versions of pnpm specified".
+
+## Root cause
+
+Phiên bản pnpm bị khai báo ở hai nơi (packageManager trong package.json và bước pnpm/action-setup) nên action từ chối chạy.
+
+## Resolution
+
+Workflow CI được sửa trong các commit CI ngày 12-13/07 (không xác định đúng commit); lỗi không lặp lại sau 12/07.
+
+## Evidence
+
+- ci-run 29169060725 — "Multiple versions of pnpm specified"
+- ci-run 29169210862
+- ci-run 29179402029
+
+## Sources
+
+- github-actions
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P003.md -->
+
+# P003: Commit "harden phase 2A" quá lớn phải revert khỏi main
+
+id: P003
+status: fixed
+tier: B · area: ai-agent-process · date: 2026-07-11 · confidence: low
+resolution type: revert
+
+## Problem
+
+Commit lớn 'feat(codex): refactor specs and harden phase 2A' (migration matching, token.service, env validation, economy) vào main rồi bị revert sau 1 ngày.
+
+## Root cause
+
+Chưa ro: bằng chứng chỉ có subject revert, không có lý do trong body.
+
+## Resolution
+
+Revert toàn bộ phase 2A hardening khỏi main (d09be35).
+
+## Evidence
+
+- commit 0f51134 — "feat(codex): refactor specs and harden phase 2A"
+- commit d09be35 — "revert(codex): remove phase 2A hardening from main"
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P004.md -->
+
+# P004: Adapter CLAUDE.md / skills lệch bản canonical (symlink tay)
+
+id: P004
+status: fixed
+tier: B · area: ai-agent-process · date: 2026-07-12 · confidence: high
+resolution type: ci-config, code-fix, test-added
+
+## Problem
+
+CLAUDE.md và .claude/skills là file văn bản trỏ tay, nội dung lệch bản canonical (AGENTS.md, .agents/skills); mô tả review-module đã trôi thật và phải Read thêm để lấy luật.
+
+## Root cause
+
+Adapter là bản sao thủ công nên dễ drift khi canonical đổi.
+
+## Resolution
+
+Chuyển thành symlink thật; thêm validateSymlinks() vào agent:check; tách vendor-wording.mjs có test và escape-hatch; ưu tiên $CLAUDE_PROJECT_DIR trong settings. Sau đó 46623e4 hỗ trợ symlink trên Windows.
+
+## Evidence
+
+- commit b40267b — "mô tả review-module ở .claude/skills đã lệch với bản canonical"
+- commit 46623e4 — "fix(agent): support symlink adapters on Windows"
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P005.md -->
+
+# P005: CodeQL: loop-bound-injection (high) ở palm-match.hash.ts
+
+id: P005
+status: fixed
+tier: A · area: auth-security · date: 2026-07-13 · confidence: medium
+resolution type: code-fix
+
+## Problem
+
+CodeQL báo cảnh báo mức cao js/loop-bound-injection (vòng lặp có cận phụ thuộc dữ liệu người dùng) ở palm-match.hash.ts (alert #1, 13/07).
+
+## Root cause
+
+Hàm băm FNV-1a lặp theo độ dài chuỗi đầu vào.
+
+## Resolution
+
+CodeQL đánh dấu fixed ngày 17/07, cùng ngày commit 41bc055 chuyển hàm băm sang common/hash/fnv1a.ts.
+
+## Evidence
+
+- commit 41bc055
+- file apps/core-api/src/modules/palm-match/palm-match.hash.ts
+
+## Sources
+
+- code
+- git
+
+Back to [issues/index.md](index.md) · [issues/auth-security.md](auth-security.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P006.md -->
+
+# P006: Swagger thiếu cursor pagination → client sinh kiểu never
+
+id: P006
+status: fixed
+tier: A · area: frontend-ux · date: 2026-07-13 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+CursorPageQueryDto và meta CursorPageMeta thiếu @ApiProperty/@ApiQuery nên openapi-typescript sinh query/meta thành never/object rỗng, FE phải ép kiểu tay.
+
+## Root cause
+
+DTO nằm ở entry common-dtos dùng chung FE nên không kéo @nestjs/swagger vào.
+
+## Resolution
+
+Thêm ApiCursorPageQuery()/ApiCursorPageMeta() trong common/decorators, gắn vào 7 controller, regenerate openapi/core-api.json và libs/api-client. Chỉ annotation, không đổi runtime.
+
+## Evidence
+
+- commit 800a9e8 — "openapi-typescript emit query/meta thành `never`/object rỗng"
+- pr #14
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/frontend-ux.md](frontend-ux.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P007.md -->
+
+# P007: CI hosted lệch CI local (runner sạch)
+
+id: P007
+status: fixed
+tier: A · area: ci-cd · date: 2026-07-13 · confidence: high
+resolution type: ci-config, dependency-bump, test-added
+
+## Problem
+
+CI hosted lệch local: @eslint/js không resolve trên runner sạch, Next build thiếu 3 NEXT_PUBLIC_*, gitleaks chặn secret giả lịch sử, Docker job bị skipped, actionlint bắt ShellCheck mà local bỏ sót, action dùng Node 20.
+
+## Root cause
+
+@eslint/js chỉ có qua dependency bắc cầu; local có cache/env nên pass; local gate không cài ShellCheck.
+
+## Resolution
+
+Thêm pnpm ci:preflight và hook pre-push chạy Node 22 container sạch; .gitleaks-baseline theo fingerprint; local tự cài ShellCheck pin SHA-256; nâng pnpm/action-setup và upload-artifact lên bản Node 24; workflow-policy.mjs có test.
+
+## Evidence
+
+- pr #16 — "Build Next.js trên runner sạch thiếu ba `NEXT_PUBLIC_*`"
+- pr #19
+- commit d8676be
+- commit f7186b6
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P008.md -->
+
+# P008: CodeQL: log rõ thông tin nhạy cảm ở runner CI local
+
+id: P008
+status: fixed
+tier: A · area: auth-security · date: 2026-07-13 · confidence: high
+resolution type: code-fix, test-added
+
+## Problem
+
+scripts/ci/local.mjs in command arguments chứa giá trị nhạy cảm, CodeQL báo 'Clear-text logging of sensitive information'; test cũ còn đòi chuỗi thô.
+
+## Root cause
+
+Runner log nguyên command arguments, không che dữ liệu nhạy cảm.
+
+## Resolution
+
+Hai lần Copilot Autofix che log, rồi 966c92a đơn giản hoá redaction và sửa local.test.mjs.
+
+## Evidence
+
+- commit 97aae36 — "Potential fix for pull request finding 'CodeQL / Clear-text logging of sensitive information'"
+- commit 5bcb175
+- commit 966c92a — "harden ci local log redaction"
+- pr #16
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/auth-security.md](auth-security.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P009.md -->
+
+# P009: Cookie refresh token: 2 lỗi chỉ lộ khi test trình duyệt thật
+
+id: P009
+status: fixed
+tier: A · area: auth-security · date: 2026-07-13 · confidence: medium
+resolution type: code-fix, design-doc-adr, test-added
+
+## Problem
+
+Verify bằng browser thật khi chuyển refresh token sang httpOnly cookie phát hiện 2 lỗi mà unit test không bắt: createApiClient thiếu credentials:'include' nên browser bỏ Set-Cookie.
+
+## Root cause
+
+Thiếu credentials:'include' mặc định trong createApiClient; lỗi thứ hai bị cắt trong gói bằng chứng.
+
+## Resolution
+
+Sửa client mặc định credentials:'include' và lỗi còn lại, thêm Playwright E2E thật (apps/web/e2e) làm bằng chứng browser bắt buộc theo ADR 0003/0007.
+
+## Evidence
+
+- pr #26 — "phát hiện và sửa 2 lỗi thật không unit test nào bắt được"
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/auth-security.md](auth-security.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P010.md -->
+
+# P010: Bộ lọc vùng Discovery cho độ chính xác giả (LRN-001)
+
+id: P010
+status: fixed
+tier: B · area: matching · date: 2026-07-13 · confidence: low
+resolution type: code-fix, design-doc-adr
+
+## Problem
+
+Discovery W1 định lọc theo city-region nhưng không có đường ghi city thật, filter sẽ cho độ chính xác giả.
+
+## Root cause
+
+Giả định thiết kế không khớp vòng đời dữ liệu.
+
+## Resolution
+
+Bỏ region filtering khỏi W1; Nearby có mô hình location/settings riêng.
+
+## Evidence
+
+- doc docs/reference/lessons-registry.md — "LRN-2026-001"
+- doc docs/reference/project-handoff.md — "Do not expose precision that the data lifecycle cannot support."
+
+## Sources
+
+- docs
+
+Back to [issues/index.md](index.md) · [issues/matching.md](matching.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P011.md -->
+
+# P011: Transaction Postgres bị aborted sau unique violation (LRN-002)
+
+id: P011
+status: mitigated
+tier: A · area: database-concurrency · date: 2026-07-13 · confidence: medium
+resolution type: code-fix, process-rule
+
+## Problem
+
+Bắt unique violation rồi đọc lại trong cùng transaction PostgreSQL tường minh thì transaction đã aborted, mất đường phục hồi.
+
+## Root cause
+
+PostgreSQL đánh dấu transaction aborted sau câu lệnh lỗi.
+
+## Resolution
+
+Insert/catch/read nằm ngoài transaction tường minh (safety.service). Vẫn thiếu regression test; sau đó d506ca2 áp dụng cùng nguyên tắc cho short-video.
+
+## Evidence
+
+- doc docs/reference/lessons-registry.md — "LRN-2026-002"
+- doc docs/reference/project-handoff.md — "focused regression test remains a gap"
+
+## Sources
+
+- docs
+
+Back to [issues/index.md](index.md) · [issues/database-concurrency.md](database-concurrency.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P012.md -->
+
+# P012: CodeQL: loop-bound-injection (high) ở common/hash/fnv1a.ts còn mở
+
+id: P012
+status: open
+tier: A · area: auth-security · date: 2026-07-16 · confidence: medium
+resolution type: none-yet
+
+## Problem
+
+Cảnh báo CodeQL mức cao js/loop-bound-injection (alert #9) ở fnv1a.ts, mở từ 16/07 và chưa được sửa hay dismiss.
+
+## Root cause
+
+Cùng mẫu với alert #1: fnv1aHash lặp theo input.length; tác động thực tế thấp (seed deterministic, không phải crypto) nhưng alert vẫn mở.
+
+## Resolution
+
+Chưa xử lý: cần giới hạn độ dài đầu vào hoặc dismiss alert kèm lý do.
+
+## Evidence
+
+- file apps/core-api/src/common/hash/fnv1a.ts — "for (let i = 0; i < input.length; i++)"
+
+## Sources
+
+- code
+
+Back to [issues/index.md](index.md) · [issues/auth-security.md](auth-security.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P013.md -->
+
+# P013: Job định kỳ chồng lấp khi tick chậm/reject (LRN-003)
+
+id: P013
+status: fixed
+tier: A · area: database-concurrency · date: 2026-07-18 · confidence: high
+resolution type: code-fix, design-doc-adr, test-added
+
+## Problem
+
+Tick định kỳ chậm hoặc reject có thể chồng lấp, gây unhandled error hoặc việc trùng trong process.
+
+## Root cause
+
+Timer không có kỷ luật vòng đời/overlap dùng chung.
+
+## Resolution
+
+ManagedInterval bắt lỗi ở ranh giới timer, nhả cờ running trong finally; có managed-interval.spec.ts; khoá DB/idempotency vẫn bảo vệ liên process.
+
+## Evidence
+
+- doc docs/reference/lessons-registry.md — "LRN-2026-003"
+- file apps/core-api/src/common/scheduling/managed-interval.ts
+- doc docs/plans/2026-07-18-managed-interval-refactor-plan.md — "`ManagedInterval.runExclusive`, có `finally` nhả cờ kể cả task throw"
+- doc docs/reference/project-handoff.md — "LRN-2026-003"
+
+## Sources
+
+- code
+- docs
+
+Back to [issues/index.md](index.md) · [issues/database-concurrency.md](database-concurrency.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P014.md -->
+
+# P014: Cấu hình theo máy (tunnel/IP/credential) nằm trong repo (LRN-004)
+
+id: P014
+status: fixed
+tier: A · area: deploy-config · date: 2026-07-18 · confidence: high
+resolution type: code-fix, process-rule, test-added
+
+## Problem
+
+ID tunnel, IP LAN hoặc credential theo máy nằm trong cấu hình runtime được track, làm local/release không portable và lộ giả định môi trường.
+
+## Root cause
+
+Giá trị cấu hình không do đường env chuẩn sở hữu.
+
+## Resolution
+
+Root .env và interpolation có validate sở hữu giá trị local; scripts/agent/config-single-source.test.mjs quét động các bề mặt cấu hình được track.
+
+## Evidence
+
+- doc docs/reference/lessons-registry.md — "LRN-2026-004"
+- file scripts/agent/config-single-source.test.mjs
+- doc docs/plans/2026-07-18-config-refactor-review.md — "Regression test chặn machine-specific tunnel/IP/credential quay lại."
+- doc docs/reference/project-handoff.md — "LRN-2026-004"
+
+## Sources
+
+- code
+- docs
+
+Back to [issues/index.md](index.md) · [issues/deploy-config.md](deploy-config.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P015.md -->
+
+# P015: Socket reconnect không khôi phục state bền (LRN-005)
+
+id: P015
+status: mitigated
+tier: A · area: realtime-gateway · date: 2026-07-18 · confidence: medium
+resolution type: code-fix
+
+## Problem
+
+Chỉ reconnect socket realtime có thể để state bền phía server cũ sau khi lỡ sự kiện.
+
+## Root cause
+
+Đường reconnect coi phục hồi transport là phục hồi state.
+
+## Resolution
+
+Handler reconnect ở apps/web layout refetch state REST. Test hành vi cho missed-event recovery vẫn còn thiếu.
+
+## Evidence
+
+- doc docs/reference/lessons-registry.md — "LRN-2026-005"
+- doc docs/reference/project-handoff.md — "focused behavior test remains open."
+
+## Sources
+
+- docs
+
+Back to [issues/index.md](index.md) · [issues/realtime-gateway.md](realtime-gateway.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P016.md -->
+
+# P016: PASS cục bộ bị hiểu thành PASS toàn repo (LRN-006)
+
+id: P016
+status: mitigated
+tier: B · area: ai-agent-process · date: 2026-07-18 · confidence: medium
+resolution type: design-doc-adr, none-yet, process-rule
+
+## Problem
+
+Test trong phạm vi task pass nhưng gate format toàn repo fail vì file có sẵn ngoài phạm vi, nên không thể khẳng định kết quả toàn repo.
+
+## Root cause
+
+Gate repo kiểm toàn worktree, không theo quyền sở hữu file của task.
+
+## Resolution
+
+Quy tắc: giữ nguyên sửa đổi của người khác, báo va chạm, tách bằng chứng theo phạm vi và toàn repo.
+
+## Evidence
+
+- doc docs/reference/lessons-registry.md — "LRN-2026-006"
+- doc docs/reference/project-handoff.md — "A targeted PASS and a repository-wide PASS are different claims"
+- codex-thread 019fff93 — "toàn gate bị FAIL bởi lỗi format có sẵn ở `scripts/jest-resolver.cjs`"
+
+## Sources
+
+- codex
+- docs
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P017.md -->
+
+# P017: OTLP exporter nhận endpoint Prometheus remote_write (LRN-007)
+
+id: P017
+status: fixed
+tier: A · area: observability · date: 2026-07-18 · confidence: high
+resolution type: code-fix, test-added
+
+## Problem
+
+OTLP metrics exporter nhận endpoint Prometheus remote_write nên gửi OTLP tới endpoint không tương thích và export hỏng.
+
+## Root cause
+
+Tên biến môi trường làm mờ giao thức của endpoint.
+
+## Resolution
+
+Resolver trong libs/observability/src/lib/tracing.ts từ chối /api/prom/push, chấp nhận dạng endpoint OTLP; có tracing.spec.ts.
+
+## Evidence
+
+- doc docs/reference/lessons-registry.md — "LRN-2026-007"
+- commit 07c90f9
+- doc docs/reference/project-handoff.md — "OTLP resolver and regression test."
+
+## Sources
+
+- docs
+- git
+
+Back to [issues/index.md](index.md) · [issues/observability.md](observability.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P018.md -->
+
+# P018: JWT access token trùng nhau khi cấp trong cùng giây (LRN-010)
+
+id: P018
+status: fixed
+tier: A · area: auth-security · date: 2026-07-18 · confidence: high
+resolution type: code-fix, test-added
+
+## Problem
+
+Login rồi refresh ngay có thể ra access JWT giống hệt nhau, phạm hợp đồng rotation khi cùng một giây.
+
+## Root cause
+
+iat/exp độ phân giải giây và payload không có ID duy nhất.
+
+## Resolution
+
+Mỗi access token thêm jti ngẫu nhiên trong token.service.ts; thêm test cùng giây ở token.service.spec.ts; xoay refresh family giữ nguyên.
+
+## Evidence
+
+- doc docs/reference/lessons-registry.md — "LRN-2026-010"
+- file apps/core-api/src/modules/auth/services/token.service.ts
+- doc docs/reference/project-handoff.md — "`jti` implementation and auth E2E/regression tests."
+
+## Sources
+
+- code
+- docs
+
+Back to [issues/index.md](index.md) · [issues/auth-security.md](auth-security.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P019.md -->
+
+# P019: Chữ ký DisabledIapVerifier không khớp port
+
+id: P019
+status: fixed
+tier: A · area: economy-payment · date: 2026-07-18 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+Full gate phát hiện signature DisabledIapVerifier không khớp abstract port.
+
+## Root cause
+
+Implementation của DisabledIapVerifier lệch số tham số so với port IapVerifier.
+
+## Resolution
+
+Sửa implementation giữ nguyên ba tham số; full core gate và integration DB PASS lại.
+
+## Evidence
+
+- doc docs/plans/2026-07-18-zero-cost-production-review.md — "signature của `DisabledIapVerifier` không khớp abstract port"
+
+## Sources
+
+- docs
+
+Back to [issues/index.md](index.md) · [issues/economy-payment.md](economy-payment.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P020.md -->
+
+# P020: Vòng phụ thuộc Soul DTO ↔ service
+
+id: P020
+status: fixed
+tier: B · area: other · date: 2026-07-18 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+Dependency cycle Soul DTO -> Soul service (DTO import enum từ service implementation).
+
+## Root cause
+
+Enum đặt trong service nên DTO phải import ngược boundary.
+
+## Resolution
+
+Chuyển kiểu sang soul-match.types.ts; Madge quét 801 file TS/TSX còn 0 cycle.
+
+## Evidence
+
+- doc docs/plans/2026-07-18-whole-source-refactor-review.md — "từ 1 vòng `Soul DTO → Soul service` về 0 vòng trên 801 file"
+
+## Sources
+
+- docs
+
+Back to [issues/index.md](index.md) · [issues/other.md](other.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P021.md -->
+
+# P021: Redis TLS rediss:// có nguy cơ bị Joi từ chối khi boot
+
+id: P021
+status: fixed
+tier: A · area: deploy-config · date: 2026-07-20 · confidence: medium
+resolution type: code-fix, test-added
+
+## Problem
+
+Profile hosted-free dùng Upstash rediss:// có nguy cơ bị validation Joi từ chối trước bootstrap.
+
+## Root cause
+
+Env validation chỉ chấp nhận scheme redis.
+
+## Resolution
+
+Core và signaling chấp nhận cả redis và rediss, từ chối scheme khác; unit test khoá hành vi.
+
+## Evidence
+
+- doc docs/plans/2026-07-22-hosted-free-release-review.md — "cho phép `redis` và `rediss`; unit test khóa hành vi"
+- doc docs/plans/2026-07-20-hosted-free-release-plan.md
+
+## Sources
+
+- docs
+
+Back to [issues/index.md](index.md) · [issues/deploy-config.md](deploy-config.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P022.md -->
+
+# P022: CVE ở runtime image mà pre-push local bỏ sót
+
+id: P022
+status: fixed
+tier: A · area: ci-cd · date: 2026-07-22 · confidence: medium
+resolution type: ci-config, code-fix, dependency-bump
+
+## Problem
+
+CVE ở runtime image (Web/Edge, Go cũ, toolchain thừa) bị GitHub phát hiện trong khi pre-push local vẫn xanh vì bỏ sót image.
+
+## Root cause
+
+Pre-push local không build/scan đủ bốn runtime image; Edge build bằng Go cũ, Web image giữ package manager.
+
+## Resolution
+
+Pre-push gọi pnpm ci:preflight (build+scan đủ 4 image); Web xoá package manager; Edge build Caddy bằng Go đã vá, chạy nobody; pin bản vá trong pnpm-workspace.yaml; pnpm audit high PASS.
+
+## Evidence
+
+- doc docs/plans/2026-07-22-hosted-free-release-review.md — "Local bỏ sót Web/Edge image nên xanh trước khi GitHub phát hiện CVE"
+
+## Sources
+
+- docs
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P023.md -->
+
+# P023: Integration test race do schema/Redis dùng chung
+
+id: P023
+status: fixed
+tier: A · area: ci-cd · date: 2026-07-22 · confidence: medium
+resolution type: ci-config
+
+## Problem
+
+Integration test core-api race trên schema/Redis dùng chung khi nhiều Jest worker reset tài nguyên cùng lúc.
+
+## Root cause
+
+Nhiều worker Jest chạy song song cùng schema Postgres và Redis.
+
+## Resolution
+
+jest.config.cts đặt maxWorkers: 1; hai lần chạy liên tiếp PASS 65 suite/716 test.
+
+## Evidence
+
+- doc docs/plans/2026-07-22-hosted-free-release-review.md — "`apps/core-api/jest.config.cts:9` giới hạn `maxWorkers: 1`"
+
+## Sources
+
+- docs
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P024.md -->
+
+# P024: Build web OpenNext/ESM hỏng, phải sửa 3 lần
+
+id: P024
+status: fixed
+tier: A · area: ci-cd · date: 2026-07-22 · confidence: medium
+resolution type: dependency-bump, code-fix
+
+## Problem
+
+Build web OpenNext/ESM cho deploy edge (Cloudflare) hỏng, phải sửa lặp lại ba lần liên tiếp (#32, #36, #37).
+
+## Root cause
+
+Chưa rõ chi tiết (body commit rỗng): chỉ thấy đổi package.json/pnpm-lock và cấu hình build edge; commit 82dd0f7 còn lỡ commit cache .wrangler.
+
+## Resolution
+
+Ghim/nâng dependency (package.json, pnpm-lock) và chỉnh Dockerfile.edge / apps/web/project.json qua ba lần sửa liên tiếp.
+
+## Evidence
+
+- commit 81864a3 — "fix: opennext-esm-build (#32)"
+- commit 4b29328
+- commit 82dd0f7
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P025.md -->
+
+# P025: Audit dependency báo lỗi brace-expansion
+
+id: P025
+status: fixed
+tier: A · area: dependencies · date: 2026-07-22 · confidence: medium
+resolution type: dependency-bump
+
+## Problem
+
+pnpm audit báo cảnh báo dependency liên quan brace-expansion nên CI/audit gate đỏ.
+
+## Root cause
+
+Phiên bản dependency bị audit cảnh báo trong cây phụ thuộc (chi tiết CVE không có trong commit).
+
+## Resolution
+
+Một commit lớn đổi package.json, pnpm-workspace.yaml và pnpm-lock.yaml (1176 dòng) để loại phiên bản bị cảnh báo (#35).
+
+## Evidence
+
+- commit 0d657c9 — "fix: deps-brace-expansion-audit (#35)"
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/dependencies.md](dependencies.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P026.md -->
+
+# P026: Production thiếu biến môi trường đăng nhập
+
+id: P026
+status: fixed
+tier: A · area: deploy-config · date: 2026-07-24 · confidence: medium
+resolution type: ci-config, env-config
+
+## Problem
+
+Production thiếu biến môi trường của luồng đăng nhập nên đăng nhập hỏng.
+
+## Root cause
+
+Workflow ci.yml / hosted-release.yml không truyền đủ biến môi trường vào bước build/deploy (chi tiết tên biến không có trong commit).
+
+## Resolution
+
+Sửa .github/workflows/ci.yml (120 dòng) và hosted-release.yml để truyền đủ biến (#39).
+
+## Evidence
+
+- commit fe2aa01 — "fix:resolve missing login env variable on production (#39)"
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/deploy-config.md](deploy-config.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P027.md -->
+
+# P027: CI quality-result đỏ do comment/param env trong workflow
+
+id: P027
+status: fixed
+tier: A · area: ci-cd · date: 2026-07-24 · confidence: medium
+resolution type: ci-config
+
+## Problem
+
+Job quality-result của CI fail vì comment/param env trong workflow.
+
+## Root cause
+
+Cú pháp/giá trị env trong ci.yml làm bước tổng hợp kết quả quality fail.
+
+## Resolution
+
+Gỡ comment param env (#40) rồi chỉnh bước tổng hợp kết quả quality trong ci.yml (#41).
+
+## Evidence
+
+- commit 8b28c91 — "fix(ci): remove param env comment (#40)"
+- commit 4e53ca1
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P028.md -->
+
+# P028: Đăng nhập SMS "accepted" của admin còn bật ở production
+
+id: P028
+status: fixed
+tier: A · area: auth-security · date: 2026-07-24 · confidence: low
+resolution type: ci-config
+
+## Problem
+
+Cấu hình hosted-release còn 'accepted login sms' ở production cho admin.
+
+## Root cause
+
+Chưa ro: chỉ có subject, diff 2 dòng ở hosted-release.yml.
+
+## Resolution
+
+Gỡ cấu hình accepted login sms khỏi hosted-release.yml (#44).
+
+## Evidence
+
+- commit daaaa4f — "fix(admin): remove accepted login sms production (#44)"
+- pr #44
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/auth-security.md](auth-security.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P029.md -->
+
+# P029: Nhiều đường bypass gate CI (hook local / GitHub / hosted lệch nhau)
+
+id: P029
+status: fixed
+tier: B · area: ci-cd · date: 2026-07-30 · confidence: high
+resolution type: ci-config, test-added
+
+## Problem
+
+Hook local, GitHub Actions và hosted release dùng gate khác nhau, còn đường bypass; release không bắt buộc ci.yml push run thành công trên main.
+
+## Root cause
+
+Contract CI không thống nhất, gate chạy được ở chế độ không fail-closed.
+
+## Resolution
+
+Hợp nhất 1 contract fail-closed, bỏ bypass, release yêu cầu run ci.yml thành công đúng commit, gate check-only deterministic (NX_TUI=false, frozen lockfile), cô lập Nx state; thêm test workflow-policy.
+
+## Evidence
+
+- commit ab57f9b — "remove CI/hosted bypass paths and require an exact successful `ci.yml` push run on `main`"
+- pr #50
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P030.md -->
+
+# P030: Reviewer độc lập tìm ra 3 vấn đề khi tổ chức lại tài liệu
+
+id: P030
+status: fixed
+tier: B · area: docs-tooling · date: 2026-07-30 · confidence: low
+resolution type: design-doc-adr
+
+## Problem
+
+Counterexample reviewer tìm ra ba vấn đề actionable khi tổ chức lại tài liệu; baseline có các finding cần sửa.
+
+## Root cause
+
+chua ro (trích đoạn không nêu chi tiết)
+
+## Resolution
+
+Sửa theo bảng Baseline findings/Correction; dùng progressive-disclosure indexes và evidence ladder.
+
+## Evidence
+
+- doc docs/plans/2026-07-30-documentation-reorganization-review.md — "The counterexample reviewer found three actionable issues:"
+
+## Sources
+
+- docs
+
+Back to [issues/index.md](index.md) · [issues/docs-tooling.md](docs-tooling.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P031.md -->
+
+# P031: Wrapper OTel cho OpenNext Cloudflare handler lỗi sau khi thêm Loki
+
+id: P031
+status: fixed
+tier: A · area: observability · date: 2026-08-02 · confidence: low
+resolution type: code-fix
+
+## Problem
+
+Wrapper OTel cho OpenNext Cloudflare handler lỗi 'do not object cloudflare' sau khi thêm Loki export.
+
+## Root cause
+
+Chưa ro: diff 10 dòng ở apps/web/open-next.config.ts.
+
+## Resolution
+
+Sửa open-next.config.ts (#58) để wrapper @microlabs/otel-cf-workers tương thích Cloudflare.
+
+## Evidence
+
+- commit 59356ec — "fix(observability): wrapper do not object cloudflare (#58)"
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/observability.md](observability.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P032.md -->
+
+# P032: Lỗi boot production khi chạy profile local (Matching capability)
+
+id: P032
+status: fixed
+tier: A · area: matching · date: 2026-08-12 · confidence: low
+resolution type: code-fix, env-config
+
+## Problem
+
+Lỗi production boot khi chạy local deployment profile cho Matching capability boundary.
+
+## Root cause
+
+Chưa ro chi tiết; review chỉ nói thiếu adapter S3 tường minh cho profile local.
+
+## Resolution
+
+Sửa ở local deployment profile bằng S3 adapter explicit; verify PASS với runtime Docker smoke.
+
+## Evidence
+
+- doc docs/plans/2026-08-12-matching-capability-boundary-verify.md — "lỗi production boot ban đầu đã được sửa ở local deployment profile bằng S3 adapter"
+
+## Sources
+
+- docs
+
+Back to [issues/index.md](index.md) · [issues/matching.md](matching.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P033.md -->
+
+# P033: Khe hở đồng thời ở feed / party-room / safety
+
+id: P033
+status: fixed
+tier: A · area: database-concurrency · date: 2026-08-13 · confidence: medium
+resolution type: code-fix, test-added
+
+## Problem
+
+Các luồng core (feed, party-room, safety) có khe hở đồng thời.
+
+## Root cause
+
+Chi tiết chưa ro từ body; thay đổi tập trung vào party-room.service (164 dòng), feed.service, safety.service.
+
+## Resolution
+
+Sửa 3 service, thêm integration/unit spec cho feed, party-room, safety, cập nhật docs/services/party-room-service.md; gộp qua #65.
+
+## Evidence
+
+- commit 53eef5d — "fix: close concurrency gaps in core flows"
+- commit c04b41e
+- pr #65
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/database-concurrency.md](database-concurrency.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P034.md -->
+
+# P034: Matching trả 400 (useDiamond) + nút CTA sai trạng thái
+
+id: P034
+status: fixed
+tier: A · area: matching · date: 2026-08-14 · confidence: high
+resolution type: code-fix, test-added
+
+## Problem
+
+Bấm ghép đôi trả 400 COMMON_VALIDATION_FAILED vì frontend gửi useDiamond:false.
+
+## Root cause
+
+PR #64 (db82c67) cho FE gửi useDiamond:false; API runtime chạy bản cũ còn forbidNonWhitelisted nên coi field là input thừa.
+
+## Resolution
+
+apps/web/src/features/matching/api.ts: chỉ gửi useDiamond khi true, false thì bỏ field; thêm test api.spec.ts và queue-status-panel.spec.tsx. Đã commit 71f9e17 và push.
+
+## Evidence
+
+- codex-thread 019ffebd — "API đang chạy bản trước PR này vẫn bật `forbidNonWhitelisted`, nên coi field đó là input thừa"
+- codex-thread 01a0015f — "property useDiamond should not exist"
+- commit 71f9e17
+- commit db82c67
+- pr #64
+- commit be681db — "fix(matching): fix CTA buttons and 400 payload error"
+- commit 0571a07
+- pr #67
+
+## Sources
+
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/matching.md](matching.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P035.md -->
+
+# P035: Generated client lệch OpenAPI làm CI đỏ (#188)
+
+id: P035
+status: fixed
+tier: A · area: ci-cd · date: 2026-08-14 · confidence: high
+resolution type: ci-config, code-fix, process-rule
+
+## Problem
+
+CI PR #66 job Test, build and E2E fail (kéo CI required fail): openapi:check phát hiện generated client lệch OpenAPI.
+
+## Root cause
+
+libs/api-client/src/generated/core-api.ts khai useDiamond/genderPreference optional trong khi OpenAPI yêu cầu bắt buộc.
+
+## Resolution
+
+Regenerate từ openapi/core-api.json (đổi 2 dòng), commit 0ffd61f; nâng ci:preflight/pre-push lên profile all để bắt lỗi này trước GitHub.
+
+## Evidence
+
+- codex-thread 019ffec1 — "`openapi:check` phát hiện `libs/api-client/src/generated/core-api.ts` lệch"
+- commit 0ffd61f
+- pr #66
+- codex-thread 019ffee6 — "**generated API client bị drift/stale**, không phải lỗi Docker/Postgres/Redis"
+- commit 2ee78c2
+- codex-thread 019ffec1 — "`apps/web/src/features/matching/api.ts` thiếu `useDiamond`"
+
+## Sources
+
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P036.md -->
+
+# P036: Windows: hook/runner không chạy được pnpm (.cmd: 127 / EINVAL)
+
+id: P036
+status: fixed
+tier: A · area: windows-toolchain · date: 2026-08-14 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+git push bị hook pre-push chặn: 'pnpm: command not found' (code 127), sau đó spawn EINVAL khi chạy pnpm.cmd.
+
+## Root cause
+
+Git Bash/Husky nhận PATH cũ thiếu %APPDATA%/npm; run-stage.mjs spawn trực tiếp pnpm.cmd không qua shell trên Windows.
+
+## Resolution
+
+Hook pre-commit/pre-push tự thêm %APPDATA%/npm và Program Files/nodejs vào PATH; scripts/ci/run-stage.mjs dùng shell cho .cmd/.bat (test 5/5). Commit 3f231ca, eba5763.
+
+## Evidence
+
+- codex-thread 019ffee6 — "Git Bash/Husky nhận được một PATH cũ, không có thư mục pnpm global"
+- commit 3f231ca
+- commit eba5763
+- codex-thread 019ffec1 — "`spawnSync pnpm.cmd EINVAL`"
+- commit c261afe
+- file scripts/ci/local.mjs
+- codex-thread 019fff81 — "trên Windows `pnpm.cmd` cần chạy qua shell, nên trước đó doctor báo “pnpm missing”"
+- file scripts/agent/verify.mjs
+- commit d0524ea
+- commit f6c0b03
+
+## Sources
+
+- code
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/windows-toolchain.md](windows-toolchain.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P037.md -->
+
+# P037: Windows/Docker: CRLF + symlink thành file thường làm format/agent:check đỏ
+
+id: P037
+status: fixed
+tier: A · area: windows-toolchain · date: 2026-08-14 · confidence: high
+resolution type: code-fix, env-config
+
+## Problem
+
+Trên Windows pnpm format:check báo ~1.428 file và 9 alias symlink (CLAUDE.md, SKILL.md) bị checkout thành file thường, trong khi CI Linux chỉ báo 2 file.
+
+## Root cause
+
+Checkout Windows lẫn CRLF/LF, chưa có rule eol; symlink bị materialize thành file làm Prettier đòi newline và agent:check fail.
+
+## Resolution
+
+Thêm .gitattributes ép LF, .prettierignore loại alias symlink, bật core.symlinks; adapter-parity chỉ chấp nhận file materialized khi nội dung khớp target trong index. Commit f717299, 86e1a45.
+
+## Evidence
+
+- codex-thread 019ffee6 — "toàn bộ checkout Windows đang bị line-ending mixed"
+- commit f717299
+- commit 86e1a45
+- codex-thread 019ffec1 — "Docker mount workspace Windows vào container Linux làm symlink bị “materialize” thành file text"
+- file scripts/agent/repository-check.mjs
+- commit 8b2c13c
+
+## Sources
+
+- code
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/windows-toolchain.md](windows-toolchain.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P038.md -->
+
+# P038: Windows: Jest không chạy (thiếu VC++ runtime, resolver native)
+
+id: P038
+status: fixed
+tier: A · area: windows-toolchain · date: 2026-08-14 · confidence: medium
+resolution type: code-fix, env-config, none-yet
+
+## Problem
+
+Jest trên Windows/pnpm không tìm được preset/ts-jest/resolver; core-api và signaling jest không chạy; thiếu vcruntime140.dll.
+
+## Root cause
+
+preset resolve tương đối từ app root, <rootDir> của resolver đổi khi spread; unrs-resolver binding native ERR_DLOPEN_FAILED do thiếu VC++ runtime.
+
+## Resolution
+
+Nạp preset bằng require, override resolver về scripts/jest/resolver.cjs (fallback Node/TS), cài VC++ Redistributable; Jest E2E config chuyển sang ESM import + fileURLToPath; signaling 8 suite PASS.
+
+## Evidence
+
+- codex-thread 019ffec1 — "Jest 30 đang gọi `unrs-resolver`, nhưng binding native Windows"
+- file scripts/jest/resolver.cjs
+- commit c261afe
+- codex-thread 019fff81 — "Jest cần Visual C++ Runtime, còn Nx build gặp lỗi quyền hệ điều hành `1314`"
+
+## Sources
+
+- code
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/windows-toolchain.md](windows-toolchain.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P039.md -->
+
+# P039: Pre-push trên Windows đỏ giả do giả định POSIX / công cụ Linux-only
+
+id: P039
+status: fixed
+tier: A · area: windows-toolchain · date: 2026-08-14 · confidence: high
+resolution type: code-fix, process-rule, test-added
+
+## Problem
+
+Local gate trên Windows đỏ giả: security-tools 16 test, markdown-links, pre-tool-guard, module-boundaries 14 test fail do path/platform.
+
+## Root cause
+
+Test giả định path POSIX/$HOME, URL.pathname thành /C:/..., snapshot boundary dùng dấu \ thay vì /.
+
+## Resolution
+
+Sửa test dùng path separator/homedir đa nền tảng, chuẩn hóa POSIX trong module-boundaries.spec.ts; dry-run không đòi Linux/Docker. Trước đó push --no-verify có kiểm soát.
+
+## Evidence
+
+- codex-thread 019ffec1 — "16 test nền ở `scripts/ci/security-tools.test.mjs`"
+- commit 0ffd61f
+- file apps/core-api/src/arch/module-boundaries.spec.ts
+- codex-thread 01a0015f — "Container smoke dùng Docker host networking giống GitHub Actions; chạy lệnh này trên Linux/WSL."
+- codex-thread 019ffee6 — "Agent guard tests: 113 pass, 16 fail"
+- commit f0e32ad
+- commit e03b278
+
+## Sources
+
+- code
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/windows-toolchain.md](windows-toolchain.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P040.md -->
+
+# P040: Watchdog CI quá thô cắt gate giữa chừng (LRN-008)
+
+id: P040
+status: fixed
+tier: B · area: ci-cd · date: 2026-08-14 · confidence: high
+resolution type: ci-config, code-fix, process-rule, test-added
+
+## Problem
+
+Wrapper 45 giây chung cắt gate CI tổng hợp trước khi thấy lỗi thật, chẩn đoán mơ hồ và tiến trình con còn chạy.
+
+## Root cause
+
+Chính sách timeout cho probe ngắn bị áp cho lệnh install/test/build nhiều stage.
+
+## Resolution
+
+stage-policy.mjs đặt timeout theo task, run-stage.mjs kill cả process group, in marker TIMED_OUT; có test và runbook quality-gates.
+
+## Evidence
+
+- commit 8ba9ef9 — "fix(ci): use task-aware stage timeouts"
+- doc docs/reference/lessons-registry.md — "LRN-2026-008"
+- commit 1ba5b54
+- file scripts/ci/stage-policy.mjs
+- doc docs/reference/project-handoff.md — "Stage runner and timeout tests."
+- doc docs/plans/2026-07-29-payos-diamond-verify.md — "bị wrapper `timeout 45s` kết"
+
+## Sources
+
+- code
+- docs
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P041.md -->
+
+# P041: Timeout cứng quá chặt / chạy song song làm test flaky
+
+id: P041
+status: fixed
+tier: A · area: ci-cd · date: 2026-08-14 · confidence: high
+resolution type: ci-config, code-fix, test-added
+
+## Problem
+
+Pre-push fail lặp do timeout cứng: web friend-picker.spec 5s trong Docker, 2 test run-stage deadline 2s (127 pass/2 fail), frontend test 5s khi nhiều Vitest worker.
+
+## Root cause
+
+Deadline test quá sát trên Windows bind mount/Docker chậm; hai container preflight stale chạy đồng thời trên cùng workspace.
+
+## Resolution
+
+friend-picker timeout 15s (bacd2f3); run-stage test deadline 10s (5beb6f8); Vitest timeout 15s khi CI=true ở admin/web vite config; dọn container stale.
+
+## Evidence
+
+- commit bacd2f3
+- commit 5beb6f8 — "test(ci): tolerate slow clean container startup"
+- codex-thread 019ffec1 — "deadline cứng 2 giây cho child process"
+- commit a91d73d — "perf(ci): cache local tasks and guard parallel stages"
+- codex-thread 019ffec1 — "hai nhánh “độc lập về file/database” vẫn tranh CPU/RAM"
+
+## Sources
+
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P042.md -->
+
+# P042: Test gia hạn lease bị đói timer khi chạy cạnh pool lớn (LRN-009)
+
+id: P042
+status: fixed
+tier: A · area: ci-cd · date: 2026-08-14 · confidence: high
+resolution type: ci-config, process-rule, test-added
+
+## Problem
+
+Test gia hạn lease của signaling pass riêng nhưng fail khi chạy cạnh pool coverage của Core API vì timer starvation giống replica chết.
+
+## Root cause
+
+Scheduler CI xếp test Redis TTL nhạy thời gian chung với Jest pool lớn.
+
+## Resolution
+
+Local/GitHub CI chạy signaling-gateway:test ở stage Nx cô lập trước phần test song song; TTL tối thiểu production và hành vi fail-closed giữ nguyên.
+
+## Evidence
+
+- doc docs/reference/lessons-registry.md — "LRN-2026-009"
+- file scripts/ci/local.mjs
+- doc docs/reference/project-handoff.md — "CI scheduler and real Redis integration test."
+- commit 60269c6 — "fix(ci): isolate nx cache flags in dry-run tests"
+
+## Sources
+
+- code
+- docs
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P043.md -->
+
+# P043: Nx cache bật cho test có state → có thể trả kết quả cũ
+
+id: P043
+status: fixed
+tier: B · area: ci-cd · date: 2026-08-14 · confidence: medium
+resolution type: ci-config, code-fix
+
+## Problem
+
+Nx cache đang bật cho test tích hợp có state (core-api, signaling Redis) và E2E, có thể trả kết quả cũ dù DB/Redis đổi.
+
+## Root cause
+
+Nx hash không bao gồm trạng thái DB/Redis runtime; target e2e/test stateful vẫn cache mặc định.
+
+## Resolution
+
+Tắt cache cho core-api/signaling-gateway test, toàn bộ E2E và target web atomized; thêm LOCAL_CI_STRICT_CLEAN và Docker Buildx GHA cache. Commit 79bea23.
+
+## Evidence
+
+- commit 79bea23 — "ci: add strict clean and stateful cache policy"
+- file nx.json
+
+## Sources
+
+- code
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P044.md -->
+
+# P044: E2E local: server cũ còn sống, reset DB chồng, thiếu baseUrl
+
+id: P044
+status: fixed
+tier: A · area: ci-cd · date: 2026-08-14 · confidence: high
+resolution type: ci-config, code-fix
+
+## Problem
+
+E2E local fail lẫn lộn: server core-api/signaling cũ còn sống, Core E2E reset DB khi Web E2E đang đăng nhập; web E2E thiếu baseUrl alias và lệnh PORT không chạy trên Windows.
+
+## Root cause
+
+Teardown dùng process.kill(-pid) kiểu Unix; --parallel=2 chung DB; tsconfig.base mất baseUrl; PORT=... không tương thích Windows.
+
+## Resolution
+
+isolated-node-server.ts dùng taskkill /T /F; E2E --parallel=1; khôi phục baseUrl trong tsconfig.base.json; sửa playwright.config.mts. Signaling 2/2, core 12/12, web 1/1 PASS.
+
+## Evidence
+
+- codex-thread 019ffec1 — "`--parallel=2` làm Core E2E reset DB trong lúc Web E2E đăng nhập"
+- commit c261afe
+- file libs/e2e-support/src/lib/isolated-node-server.ts
+
+## Sources
+
+- code
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P045.md -->
+
+# P045: Lint: config E2E import vi phạm ranh giới Nx
+
+id: P045
+status: fixed
+tier: A · area: ci-cd · date: 2026-08-14 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+Lint fail 2 lỗi ở core-api-e2e/jest.config.ts và signaling-gateway-e2e/jest.config.ts.
+
+## Root cause
+
+Nx cấm import relative/absolute từ config E2E.
+
+## Resolution
+
+Sửa hai config theo pattern preset canonical, thêm ngoại lệ eslint đúng dòng chỉ cho config Jest; lint từng project PASS.
+
+## Evidence
+
+- codex-thread 019ffec1 — "Nx cấm import relative/absolute từ config E2E"
+- file apps/core-api-e2e/jest.config.ts
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P046.md -->
+
+# P046: Guest bấm Matching → 401 vì thiếu X-Guest-Device-Token
+
+id: P046
+status: fixed
+tier: A · area: matching · date: 2026-08-14 · confidence: high
+resolution type: code-fix, test-added
+
+## Problem
+
+Guest bấm Matching trên web luôn lỗi 401 MATCHING_GUEST_DEVICE_TOKEN_REQUIRED dù guest login thành công.
+
+## Root cause
+
+Backend bắt header X-Guest-Device-Token nhưng frontend chỉ lưu accessToken/csrfToken, không lưu và không gửi guestDeviceToken.
+
+## Resolution
+
+Lưu guestDeviceToken trong memory ở token-store (libs/api-client) và client.ts tự gắn header cho Matching; thêm test token-store/client. Hard reload chưa giữ token (ghi nhận là hạn chế).
+
+## Evidence
+
+- codex-thread 019ffec1 — "401 MATCHING_GUEST_DEVICE_TOKEN_REQUIRED"
+- commit a3f0f61
+- pr #66
+- commit 0dc42d5
+
+## Sources
+
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/matching.md](matching.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P047.md -->
+
+# P047: Ảnh avatar trỏ cdn.litmatch.example không phân giải DNS
+
+id: P047
+status: fixed
+tier: A · area: deploy-config · date: 2026-08-14 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+Ảnh avatar/catalog/layer không tải: API trả URL cdn.litmatch.example, domain .example không phân giải DNS.
+
+## Root cause
+
+Seed avatar trỏ CDN giả cdn.litmatch.example.
+
+## Resolution
+
+Thêm 8 SVG local ở apps/web/public/avatar và migration mới 1757300000000-avatar-public-assets; sửa migration cũ bị hook chặn (migration bất biến) nên hoàn tác.
+
+## Evidence
+
+- codex-thread 019ffec1 — "Domain `.example` không phân giải được DNS"
+- file apps/core-api/src/database/migrations/1757300000000-avatar-public-assets.ts
+- commit a3f0f61
+
+## Sources
+
+- code
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/deploy-config.md](deploy-config.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P048.md -->
+
+# P048: Guest thấy nút đăng bài/like/comment nhưng backend luôn 403
+
+id: P048
+status: fixed
+tier: A · area: frontend-ux · date: 2026-08-14 · confidence: high
+resolution type: code-fix, test-added
+
+## Problem
+
+Guest vẫn thấy nút tạo bài/comment/like ở Feed nhưng backend luôn trả 403; người dùng chỉ biết sau khi submit.
+
+## Root cause
+
+UI không phản ánh domain rule cấm guest thao tác Feed.
+
+## Resolution
+
+post-composer, like-button, comment-composer không hiện form cho guest và báo rõ lý do; thêm spec cho like-button/post-composer.
+
+## Evidence
+
+- codex-thread 019ffec1 — "Đây là lỗi trải nghiệm, không phải lỗi bypass bảo mật."
+- commit a3f0f61
+
+## Sources
+
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/frontend-ux.md](frontend-ux.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P049.md -->
+
+# P049: Thông báo Facebook gõ sai "ckhả dụng"
+
+id: P049
+status: fixed
+tier: A · area: frontend-ux · date: 2026-08-14 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+Thông báo API Facebook sai chính tả: 'Đăng nhập Facebook ckhả dụng.'
+
+## Root cause
+
+Lỗi gõ chuỗi trong capabilities.service.ts.
+
+## Resolution
+
+Sửa thành 'chưa khả dụng' tại apps/core-api/src/app/capabilities.service.ts.
+
+## Evidence
+
+- codex-thread 019ffec1 — "Đăng nhập Facebook ckhả dụng."
+- commit a3f0f61
+
+## Sources
+
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/frontend-ux.md](frontend-ux.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P050.md -->
+
+# P050: Không push được vì môi trường (thiếu gh, Docker/WSL2, hook)
+
+id: P050
+status: mitigated
+tier: B · area: ai-agent-process · date: 2026-08-14 · confidence: medium
+resolution type: env-config, process-rule
+
+## Problem
+
+Không push được ban đầu: thiếu gh, chưa login ducmanh001, pre-push security-tools fail, Docker/WSL2 chưa chạy do virtualization tắt; process pre-push/container mồ côi chạy chồng.
+
+## Root cause
+
+Máy thiếu công cụ (gh, WSL2/virtualization), terminal giữ PATH cũ; wrapper timeout bỏ lại tiến trình CI stale.
+
+## Resolution
+
+Cài gh/Docker, đăng nhập đúng tài khoản chỉ cấu hình local repo, bật Windows feature WSL2; dọn process/container stale; một lần push --no-verify có kiểm soát, sau đó pre-push đầy đủ PASS.
+
+## Evidence
+
+- codex-thread 019ffec1 — "WSL2 is unable to start since virtualization is not enabled"
+- commit a3f0f61
+- codex-thread 01a11bf9 — "push với `--no-verify`"
+- codex-thread 01a11dea — "b90a46b"
+- pr #75
+
+## Sources
+
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P051.md -->
+
+# P051: ci:preflight treo làm mất thay đổi chưa commit
+
+id: P051
+status: mitigated
+tier: B · area: ai-agent-process · date: 2026-08-14 · confidence: medium
+resolution type: process-rule
+
+## Problem
+
+Tiến trình pnpm ci:preflight chạy song song bị treo và làm mất các thay đổi chưa commit (fix button + payload) trong working tree.
+
+## Root cause
+
+Preflight chạy nền làm worktree quay về sạch giữa lúc agent làm việc; chạy gate song song gây race cache.
+
+## Resolution
+
+Dừng đúng hai PID preflight, khôi phục lại 8 file bằng patch, chỉ chạy test targeted sau đó.
+
+## Evidence
+
+- codex-thread 01a0015f — "`ci:preflight` vẫn treo và đã chứng minh nó có thể xoá thay đổi untracked/unstaged"
+
+## Sources
+
+- codex
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P052.md -->
+
+# P052: Sửa nhầm migration đã commit (guard bất biến chặn)
+
+id: P052
+status: fixed
+tier: B · area: database-concurrency · date: 2026-08-14 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+pre-push fail ở agent:check: migration đã commit 1753100000000-avatar.ts bị sửa (guard migration bất biến).
+
+## Root cause
+
+Chỉnh seed trực tiếp trong migration cũ thay vì đặt trong migration mới 1757300000000-avatar-public-assets.ts.
+
+## Resolution
+
+Khôi phục migration cũ về bản đã commit, giữ migration mới; pnpm agent:check PASS. Guard hoạt động đúng, không tạo commit mới.
+
+## Evidence
+
+- codex-thread 019ffee6 — "Migration đã commit là bất biến; tạo migration mới thay vì sửa/xoá."
+- file apps/core-api/src/database/migrations/1753100000000-avatar.ts
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/database-concurrency.md](database-concurrency.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P053.md -->
+
+# P053: Conflict nhánh matching với main
+
+id: P053
+status: fixed
+tier: B · area: ci-cd · date: 2026-08-14 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+Branch feat/matching-voice-friend-monetization conflict với main tại scripts/ci/local.test.mjs.
+
+## Root cause
+
+Cả hai nhánh cùng thêm test 'Economy E2E fixtures'; feature đổi thêm contract prepush.
+
+## Resolution
+
+Merge origin/main, giữ một bản test Economy và toàn bộ test prepush/database của feature; merge commit 2d1fa02, chưa push.
+
+## Evidence
+
+- codex-thread 019ffeb6 — "Conflict duy nhất: `scripts/ci/local.test.mjs`"
+- commit 2d1fa02
+
+## Sources
+
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P054.md -->
+
+# P054: Hook pre-push chỉ chạy affected nên lỗi lọt lên CI
+
+id: P054
+status: fixed
+tier: B · area: ci-cd · date: 2026-08-14 · confidence: high
+resolution type: code-fix, test-added
+
+## Problem
+
+Local hook pre-push chỉ chạy affected (prepush) nên lỗi vẫn lọt lên CI GitHub, user thấy CI đỏ nhiều.
+
+## Root cause
+
+ci:preflight dùng profile affected, không phủ quality toàn repo/test/build/E2E như CI.
+
+## Resolution
+
+Đổi ci:preflight sang profile ci trong package.json, cập nhật scripts/ci/local.test.mjs, README và docs quality-gates; giữ Docker smoke ở GitHub vì Windows không ổn định.
+
+## Evidence
+
+- codex-thread 019ffebd — "`ci:preflight` đã chuyển sang profile `ci`: quality toàn repo + toàn bộ test/build/E2E"
+- file package.json
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P055.md -->
+
+# P055: Chưa bắt buộc required checks: PR vẫn merge được khi CI đỏ
+
+id: P055
+status: open
+tier: B · area: ci-cd · date: 2026-08-14 · confidence: medium
+resolution type: none-yet
+
+## Problem
+
+PR #66 vẫn có thể merge khi CI đỏ; user hỏi cách bắt buộc phải pass hết mới merge.
+
+## Root cause
+
+Chưa có bằng chứng branch protection được bật; job con skipped có thể bị coi hợp lệ nếu require trực tiếp.
+
+## Resolution
+
+Khuyến nghị bật branch protection main yêu cầu check 'CI / CI required', up-to-date, không bypass; chưa thấy bằng chứng đã cấu hình.
+
+## Evidence
+
+- codex-thread 019ffee6 — "Chỉ cần require `CI / CI required` là đúng nhất"
+- file .github/workflows/ci.yml
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P056.md -->
+
+# P056: Báo động giả: push nhánh không thấy CI chạy
+
+id: P056
+status: false-alarm
+tier: C · area: ci-cd · date: 2026-08-14 · confidence: high
+resolution type: none-yet
+
+## Problem
+
+User thắc mắc git push lên branch fix/matching-payload-400 không thấy CI chạy.
+
+## Root cause
+
+Không phải lỗi: ci.yml chỉ chạy push trên main, branch tính năng chạy qua pull_request; PR #66 đã có CI run #188.
+
+## Resolution
+
+Giải thích; không đổi workflow, giữ mở PR sớm.
+
+## Evidence
+
+- codex-thread 019ffebd — "Không phải CI không chạy."
+- file .github/workflows/ci.yml
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P057.md -->
+
+# P057: Màn matching PC: CTA tĩnh, không có trạng thái chọn
+
+id: P057
+status: fixed
+tier: A · area: frontend-ux · date: 2026-08-14 · confidence: high
+resolution type: code-fix, test-added
+
+## Problem
+
+Màn matching PC: hai CTA Soul/Voice là span/Link tĩnh, không chọn được, không đổi màu khi chọn như mobile; kích thước nút mobile không đồng nhất.
+
+## Root cause
+
+CTA desktop (từ PR #29, 41bc055) là phần tử tĩnh không đọc query ?match=; mobile mới có aria-pressed/màu selected.
+
+## Resolution
+
+Desktop và mobile dùng chung state match trong match-actions.tsx; CTA nối với form, có aria-current/màu active; hai CTA mobile h-13 min-h-13 w-full. Thêm match-actions.spec.tsx, commit 71f9e17.
+
+## Evidence
+
+- codex-thread 01a0015f — "desktop đang dùng hai `<Link>` với màu tĩnh, không đọc `?match=...`"
+- codex-thread 019ffebd
+- commit 41bc055
+- commit 71f9e17
+
+## Sources
+
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/frontend-ux.md](frontend-ux.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P058.md -->
+
+# P058: Nhiều nút action thiếu cursor pointer
+
+id: P058
+status: fixed
+tier: A · area: frontend-ux · date: 2026-08-14 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+Nhiều nút action không hiện con trỏ pointer khi hover.
+
+## Root cause
+
+Native button và shared Button không đặt cursor:pointer.
+
+## Resolution
+
+Thêm cursor:pointer ở apps/web/src/app/global.css và shared/ui/button.tsx.
+
+## Evidence
+
+- codex-thread 019ffebd — "Bổ sung `cursor: pointer` cho native button và shared `Button`"
+- file apps/web/src/shared/ui/button.tsx
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/frontend-ux.md](frontend-ux.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P059.md -->
+
+# P059: Test Feed đỏ do thiếu setup session
+
+id: P059
+status: fixed
+tier: A · area: frontend-ux · date: 2026-08-14 · confidence: high
+resolution type: test-added
+
+## Problem
+
+Hai test Feed (like-button.spec, post-composer.spec) đỏ vì giao diện hiện trạng thái guest.
+
+## Root cause
+
+Test mock /users/me nhưng quên bật session trong tokenStore nên hook không gọi API.
+
+## Resolution
+
+Sửa setup test bật session authenticated; 6/6 PASS, không đổi business code.
+
+## Evidence
+
+- codex-thread 019fff81 — "quên bật session trong `tokenStore`"
+- file apps/web/src/features/feed/components/like-button.spec.tsx
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/frontend-ux.md](frontend-ux.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P060.md -->
+
+# P060: tsconfig baseUrl deprecated → mất alias lúc runtime
+
+id: P060
+status: fixed
+tier: A · area: windows-toolchain · date: 2026-08-14 · confidence: medium
+resolution type: code-fix
+
+## Problem
+
+VS Code đỏ vì cảnh báo baseUrl/moduleResolution 'node' deprecated; sau khi bỏ baseUrl, openapi:check không resolve @litmatch/logger.
+
+## Root cause
+
+tsconfig.base.json dùng baseUrl deprecated; tsconfig-paths/register cũ không rebase paths từ file extends nên runtime mất alias sau khi bỏ baseUrl.
+
+## Resolution
+
+Xoá baseUrl khỏi tsconfig.base.json, moduleResolution thành node10 ở core-api/signaling-gateway; thêm scripts/register-tsconfig-paths.cjs và sửa apps/core-api/project.json, openapi-check.mjs. OpenAPI check PASS.
+
+## Evidence
+
+- codex-thread 019fff81 — "`tsconfig-paths/register` cũ không rebasing `paths` từ file `extends`"
+- file scripts/register-tsconfig-paths.cjs
+- file tsconfig.base.json
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/windows-toolchain.md](windows-toolchain.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P061.md -->
+
+# P061: Lỗi TS ở tsconfig.spec không làm build fail
+
+id: P061
+status: mitigated
+tier: B · area: observability · date: 2026-08-14 · confidence: high
+resolution type: env-config, none-yet
+
+## Problem
+
+Lỗi/cảnh báo TypeScript ở tsconfig.spec.json của signaling-gateway vẫn cho build qua; user muốn tắt tạm cảnh báo.
+
+## Root cause
+
+Target build chỉ chạy webpack-cli với tsconfig.app.json, không có target typecheck; VS Code có thể dùng TypeScript khác bản workspace 5.9.3.
+
+## Resolution
+
+Tạm thời ép VS Code dùng TS workspace qua .vscode/settings.json (typescript.tsdk); ignoreDeprecations 6.0 bị gỡ vì không hợp TS 5.9. Đề xuất thêm target typecheck cho build phụ thuộc, chưa làm.
+
+## Evidence
+
+- codex-thread 019fffde — "`build` và `typecheck` đang là hai luồng khác nhau"
+- file .vscode/settings.json
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/observability.md](observability.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P062.md -->
+
+# P062: Prettier lỗi bảng markdown → CI #189 đỏ
+
+id: P062
+status: fixed
+tier: A · area: ci-cd · date: 2026-08-14 · confidence: high
+resolution type: code-fix, env-config
+
+## Problem
+
+CI #189 đỏ ở Format and lint: Prettier báo README.md và docs/runbooks/quality-gates.md; test/docker bị skipped, CI required fail.
+
+## Root cause
+
+Hai bảng Markdown vừa sửa không đúng format Prettier; commit trước không chạy hook vì máy chưa pnpm install nên Husky chưa đăng ký.
+
+## Resolution
+
+Format lại hai file, commit d794cc0; cài Node 22 + pnpm, pnpm install để Husky bật core.hooksPath=.husky/_ cho pre-commit lint-staged.
+
+## Evidence
+
+- codex-thread 019ffee6 — "`Format and lint` fail vì Prettier báo 2 file: `README.md` và `docs/runbooks/quality-gates.md`"
+- commit d794cc0
+
+## Sources
+
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P063.md -->
+
+# P063: Test frontend (admin/web) timeout lặp lại
+
+id: P063
+status: open
+tier: A · area: ci-cd · date: 2026-08-14 · confidence: medium
+resolution type: none-yet
+
+## Problem
+
+Full frontend gate fail: admin:test 4 test và web help/page.spec.tsx 1 timeout; nhiều gate bị runner timeout 124.
+
+## Root cause
+
+Nghi flaky/race khi Nx run-many chạy song song (fast gate chạy lại toàn bộ test PASS 82 files/302 tests); chưa chứng minh chắc.
+
+## Resolution
+
+Chưa sửa test; thử lại NX_PARALLEL=1 bị ngắt, không kết luận được. Ghi nhận không liên quan thay đổi.
+
+## Evidence
+
+- codex-thread 01a0015f — "`admin:test` có 4 test fail và `web` có 1 timeout trong `help/page.spec.tsx`"
+- codex-thread 01a06739 — "`admin/web` có 9 test fail (8 timeout, 1 assertion accessibility notification badge)"
+
+## Sources
+
+- codex
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P064.md -->
+
+# P064: Container smoke Linux-only chạy trên Windows chặn push
+
+id: P064
+status: fixed
+tier: A · area: ci-cd · date: 2026-08-19 · confidence: high
+resolution type: ci-config, code-fix, test-added
+
+## Problem
+
+git push bị husky pre-push chặn: ci-local all fail ở container smoke dù test/E2E đã PASS.
+
+## Root cause
+
+Container smoke dùng Docker host networking, chỉ hỗ trợ Linux/WSL, nên fail trên Windows native.
+
+## Resolution
+
+scripts/ci/local.mjs: profile all/pre-push trên Windows native skip riêng container smoke (có log); ci:local:docker chạy trực tiếp vẫn fail rõ. Thêm regression test local.test.mjs, cập nhật quality-gates.md; ci:local:all PASS.
+
+## Evidence
+
+- codex-thread 01a01908 — "Container smoke dùng Docker host networking giống GitHub Actions; chạy lệnh này trên Linux/WSL."
+- file scripts/ci/local.mjs
+- file docs/runbooks/quality-gates.md
+- commit cf17e22
+
+## Sources
+
+- code
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P065.md -->
+
+# P065: Production chạy bản cũ: route profile 404, thông báo Facebook cũ
+
+id: P065
+status: open
+tier: A · area: deploy-config · date: 2026-08-19 · confidence: high
+resolution type: env-config, none-yet, redeploy
+
+## Problem
+
+Bấm Theo dõi/Nhắn tin ở profile báo lỗi đỏ 'Cannot POST /api/v1/profiles/.../follow'; sau đó GET /profiles/:id/actions trả 404 COMMON_ROUTE_NOT_FOUND và UI khóa hai nút.
+
+## Root cause
+
+Không phải lỗi frontend/contract: source và OpenAPI đã có route. Core API runtime/prod đang chạy bản cũ hoặc chưa load ProfileSocialController (deploy chưa cập nhật); local DB còn thiếu 3 migration profile.
+
+## Resolution
+
+Local: chạy 3 migration profile, bật lại core-api rồi xác nhận route follow/conversation đã load. Prod: khuyến nghị deploy lại core-api đúng source hiện tại, giữ NEXT_PUBLIC_API_URL. FE không thêm fallback giả.
+
+## Evidence
+
+- codex-thread 01a01990 — "Cannot POST"
+- codex-thread 01a01990 — "Local DB đang thiếu đúng 3 migration liên quan profile"
+- codex-thread 01a0248b — "404 COMMON_ROUTE_NOT_FOUND"
+- codex-thread 01a01993
+- codex-thread 01a11dea — "web đã deploy tính năng profile social nhưng `core-api` production chưa deploy module tương ứng"
+- file apps/core-api/src/modules/friend/controllers/profile-social.controller.ts
+- codex-thread 01a11dea — "Đăng nhập Facebook ckhả dụng."
+- file apps/core-api/src/app/capabilities.service.ts
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/deploy-config.md](deploy-config.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P066.md -->
+
+# P066: Hiểu sai luật cổng quà (follower/ngày vs người bắt chuyện lần đầu)
+
+id: P066
+status: fixed
+tier: B · area: economy-payment · date: 2026-08-19 · confidence: medium
+resolution type: code-fix, design-doc-adr, test-added
+
+## Problem
+
+Ngưỡng tặng quà ban đầu tính theo số follower trong ngày, sai ý user (phải tính số người bắt chuyện lần đầu: 10 đầu miễn phí, từ người 11 cần quà).
+
+## Root cause
+
+Hiểu sai yêu cầu nghiệp vụ; thiết kế profile_follows làm bộ đếm thay vì bảng first-contact.
+
+## Resolution
+
+Đổi sang bảng ProfileChatContact (migration 1757600000000), mỗi cặp ghi một lần theo ngày UTC; follow không tăng bộ đếm; gift unlock ghi contact trong transaction Economy; sửa race conversation sẵn có. Matching gate 98 suites/968 tests PASS.
+
+## Evidence
+
+- codex-thread 01a01908 — "ngưỡng phải tính theo số người lần đầu mở cuộc trò chuyện trực tiếp với profile trong ngày"
+- file apps/core-api/src/database/migrations/1757600000000-profile-chat-contact.ts
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/economy-payment.md](economy-payment.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P067.md -->
+
+# P067: Toast đỏ sai ngữ cảnh khi hồ sơ yêu cầu tặng quà
+
+id: P067
+status: fixed
+tier: A · area: frontend-ux · date: 2026-08-19 · confidence: medium
+resolution type: code-fix, test-added
+
+## Problem
+
+Nút Nhắn tin gọi mutation dù server báo requiresGift gây toast đỏ sai ngữ cảnh; Discovery còn modal trung gian và 2 nút Voice/Soul Match cũ.
+
+## Root cause
+
+UI không dùng state messageAvailable/requiresGift của server; card Discovery mở DiscoveryDetailSheet thay vì đi thẳng profile.
+
+## Resolution
+
+public-profile-view không gọi mở chat khi requiresGift (hiện khu tặng quà), bỏ 2 nút cũ; discovery-card thành Link tới /users/{id}, bỏ sheet; thêm regression test profile/discovery.
+
+## Evidence
+
+- codex-thread 01a01990 — "Nút Voice Match/Soul Match đã bị loại khỏi profile page"
+- file apps/web/src/features/profile/components/public-profile-view.tsx
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/frontend-ux.md](frontend-ux.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P068.md -->
+
+# P068: Migration gộp gây phụ thuộc chéo + gate kiến trúc đỏ
+
+id: P068
+status: fixed
+tier: B · area: database-concurrency · date: 2026-08-19 · confidence: medium
+resolution type: code-fix, test-added
+
+## Problem
+
+Migration gộp follow + gift context khiến suite Friend phụ thuộc bảng gift_events; gate kiến trúc báo file lỗi sai thư mục và Gift test import nội bộ Friend; notification service sai layout.
+
+## Root cause
+
+Vi phạm boundary giữa domain/migration và quy ước thư mục services/errors của module.
+
+## Resolution
+
+Tách migration thành profile-follow và profile-gift-context; chuyển errors/service vào thư mục hợp lệ, Gift test import qua public API; architecture test PASS (116 và 103 assertions).
+
+## Evidence
+
+- codex-thread 01a01908 — "Hai kiểm tra kiến trúc hiện đã PASS (116 assertions)"
+- codex-thread 01a01990 — "`notification` chỉ cho production service nằm trong thư mục `services/`"
+
+## Sources
+
+- codex
+
+Back to [issues/index.md](index.md) · [issues/database-concurrency.md](database-concurrency.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P069.md -->
+
+# P069: Dry-run test rò cờ Nx cache làm pre-push fail
+
+id: P069
+status: fixed
+tier: A · area: ci-cd · date: 2026-08-20 · confidence: high
+resolution type: code-fix, test-added
+
+## Problem
+
+Pre-push fail: local.test.mjs dry-run không khớp /Reuse persistent Nx cache/ dù đã dọn cache Docker.
+
+## Root cause
+
+Test thiếu isolation: LOCAL_CI_STRICT_CLEAN/LOCAL_CI_RESET_NX còn bật trong terminal làm dry-run đi nhánh 'Reset Nx'.
+
+## Resolution
+
+Loại hai biến khỏi env của helper dry-run trong scripts/ci/local.test.mjs; kiểm chứng với hai biến bật (22/22 PASS), commit hotfix 60269c6 và push thành công.
+
+## Evidence
+
+- commit 60269c6 — "fix(ci): isolate nx cache flags in dry-run tests"
+- file scripts/ci/local.test.mjs
+- codex-thread 01a01990
+- commit 60269c6
+- pr #69
+
+## Sources
+
+- code
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P070.md -->
+
+# P070: Inbox không hiện hội thoại trực tiếp
+
+id: P070
+status: fixed
+tier: A · area: frontend-ux · date: 2026-08-20 · confidence: medium
+resolution type: code-fix, test-added
+
+## Problem
+
+Bấm Nhắn tin từ profile báo đã có conversation nhưng trang Tin nhắn trống; chat với người chưa kết bạn không hiện trong inbox.
+
+## Root cause
+
+/friends chỉ query bảng friendship (friend.service.ts) và friends-list chỉ hiện conversation có lastMessageAt, nên direct conversation chưa friend/chưa có tin bị ẩn.
+
+## Resolution
+
+Inbox đọc mọi conversation (listForUser), hiển thị cả conversation chưa có message; canCall derive từ follow hai chiều; thêm test unit/integration. Calling gate 98 suites/973 tests PASS.
+
+## Evidence
+
+- codex-thread 01a01990 — "inbox vẫn trống"
+- codex-thread 01a01990 — "Inbox hiển thị cả cuộc trò chuyện chưa có tin nhắn"
+
+## Sources
+
+- codex
+
+Back to [issues/index.md](index.md) · [issues/frontend-ux.md](frontend-ux.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P071.md -->
+
+# P071: Cổng gọi điện có thể bypass sau khi block (bắt được khi tự review)
+
+id: P071
+status: fixed
+tier: A · area: auth-security · date: 2026-08-20 · confidence: medium
+resolution type: code-fix, test-added
+
+## Problem
+
+Self-review thấy block không tự tắt follow cũ, nên cặp đã block vẫn có thể gọi nếu chỉ kiểm tra follow hai chiều.
+
+## Root cause
+
+Quyền gọi chỉ dựa trên hai bản ghi follow active, không kiểm tra block.
+
+## Resolution
+
+Thêm canCall ở ProfileSocialService kiểm tra block + follow hai chiều tại POST join trong calling.service.ts; thêm unit/integration test (33 test PASS, gate Calling 973 PASS).
+
+## Evidence
+
+- codex-thread 01a01990 — "block hiện không tự tắt các row follow cũ"
+- file apps/core-api/src/modules/calling/calling.service.ts
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/auth-security.md](auth-security.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P072.md -->
+
+# P072: Windows: Nx build lỗi 1314 + runner timeout (exit 124)
+
+id: P072
+status: mitigated
+tier: B · area: windows-toolchain · date: 2026-08-20 · confidence: low
+resolution type: process-rule
+
+## Problem
+
+Trên Windows: quality gate/nx build/test bị runner timeout không log (exit 124), Nx build báo os error 1314, next build ngoài Nx thiếu NEXT_PUBLIC_*, next-env.d.ts bị sinh đổi, lệnh cài package chạy nhầm thư mục cha.
+
+## Root cause
+
+Giới hạn watchdog tool, dev server giữ .next, build direct thiếu env, workdir lệch; không phải lỗi logic.
+
+## Resolution
+
+Chạy tách target, tắt dev server rồi build lại, cấp env NEXT_PUBLIC_* local, hoàn tác next-env.d.ts, gỡ package cài nhầm ở thư mục cha.
+
+## Evidence
+
+- codex-thread 01a01990 — "Windows `os error 1314`"
+- codex-thread 01a01990 — "nhầm ở thư mục cha"
+
+## Sources
+
+- codex
+
+Back to [issues/index.md](index.md) · [issues/windows-toolchain.md](windows-toolchain.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P073.md -->
+
+# P073: Báo động giả: clean container fail ở agent-check không có assertion
+
+id: P073
+status: false-alarm
+tier: C · area: ci-cd · date: 2026-08-20 · confidence: medium
+resolution type: none-yet
+
+## Problem
+
+Pre-push clean Linux container fail ở repository-check/agent check, log không có assertion cụ thể.
+
+## Root cause
+
+Không tái hiện: replay PASS (~48s); nghi run bị gián đoạn/chậm do bind mount Docker từ Windows hoặc cache, không phải code web-push.
+
+## Resolution
+
+Không sửa code; chạy lại profile clean PASS (repository check, 137 agent tests, format, lint 14 project). Lỗi thật xuất hiện sau đó là env leak của test.
+
+## Evidence
+
+- codex-thread 01a01990 — "Profile `clean` chính thức đã PASS hoàn toàn"
+
+## Sources
+
+- codex
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P074.md -->
+
+# P074: Core API production crash lúc boot (media storage dev / thiếu biến R2)
+
+id: P074
+status: in-progress
+tier: A · area: deploy-config · date: 2026-08-21 · confidence: high
+resolution type: env-config, redeploy
+
+## Problem
+
+Core API production crash khi khởi động nên bản mới không chạy, route profile 404; sau khi đổi sang r2 lại crash tiếp vì thiếu biến R2.
+
+## Root cause
+
+Env production để MEDIA_STORAGE_PROVIDER=dev (DevImageStorageProvider bị cấm ở prod); sau đó thiếu/để placeholder các biến MEDIA_R2_* và MEDIA_PUBLIC_BASE_URL nên R2ImageStorageProvider ném lỗi.
+
+## Resolution
+
+Đổi MEDIA_STORAGE_PROVIDER=r2 (user đã làm) và hướng dẫn cấp đủ 5 biến R2 (ACCOUNT_ID, BUCKET, ACCESS_KEY_ID, SECRET_ACCESS_KEY, PUBLIC_BASE_URL) rồi redeploy. Chưa thấy bằng chứng deploy cuối thành công.
+
+## Evidence
+
+- codex-thread 01a0248b — "DevImageStorageProvider không được dùng ở production"
+- codex-thread 01a0248b — "MEDIA_STORAGE_PROVIDER=r2 yêu cầu đầy đủ account, bucket, credential và MEDIA_PUBLIC_BASE_URL"
+
+## Sources
+
+- codex
+
+Back to [issues/index.md](index.md) · [issues/deploy-config.md](deploy-config.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P075.md -->
+
+# P075: OTP trả mã ngay trong response khi production bật OTP
+
+id: P075
+status: open
+tier: A · area: auth-security · date: 2026-09-03 · confidence: medium
+resolution type: none-yet
+
+## Problem
+
+requestOtp() trả thẳng { code, ttlSeconds } trong response trong khi production bật AUTH_PHONE_OTP_ENABLED=true; client lấy được mã đăng nhập mà không cần SMS.
+
+## Root cause
+
+Chưa tích hợp SMS thật; mã OTP được trả về cho client và cờ OTP vẫn bật trong configmap/compose production.
+
+## Resolution
+
+Review chỉ khuyến nghị tắt OTP production cho tới khi có SMS thật; không thấy commit sửa trong bằng chứng. Giới hạn OTP theo phone còn check-rồi-ghi, có thể vượt limit khi đồng thời.
+
+## Evidence
+
+- codex-thread 01a06739 — "OTP đang trả mã xác thực trực tiếp trong response"
+- file apps/core-api/src/modules/auth/services/otp.service.ts
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/auth-security.md](auth-security.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P076.md -->
+
+# P076: Rate limit trong bộ nhớ từng pod + trần kết nối Postgres
+
+id: P076
+status: fixed
+tier: B · area: deploy-config · date: 2026-09-03 · confidence: high
+resolution type: code-fix, design-doc-adr, env-config, none-yet
+
+## Problem
+
+Chạy nhiều replica core-api: hạn mức rate limit nhân N lần, mất khi deploy; tổng kết nối Postgres có thể vượt max_connections.
+
+## Root cause
+
+Throttler mặc định đếm trong bộ nhớ từng process; pool kết nối mỗi pod không có trần cấu hình, HPA maxReplicas nhân pool vượt ngân sách.
+
+## Resolution
+
+Thêm RedisThrottlerStorage (THROTTLE_STORAGE=redis, Lua script, fallback bộ nhớ khi Redis lỗi) và DATABASE_POOL_MAX; ghi ngân sách 10x10=100 trong k8s/README.md; k8s base đặt redis. Bổ sung sau rà soát độc lập (09/10): K8s base đặt HTTP_TRUST_PROXY_HOPS=1 (trước đó req.ip là IP ingress nên mọi người dùng chung một bucket mỗi route) và core-api cảnh báo lúc boot khi redis + production + hops 0; sàn DATABASE_POOL_MAX 5 vì job singleton giữ 1 kết nối cho advisory lock và cần thêm 1 (đã chứng minh trên Postgres thật); DATABASE_POOL_ACQUIRE_TIMEOUT_MS (mặc định 10 giây) để hết kết nối thì lỗi thay vì treo; sửa số học ngân sách kết nối trong k8s/README.md.
+
+## Evidence
+
+- commit c1284fc — "rate limit dùng chung qua Redis và trần kết nối Postgres mỗi pod"
+- doc docs/plans/2026-10-08-capacity-and-scaling-plan.md — "tổng DB connection tăng theo số replica"
+- codex-thread 01a06739 — "Rate limit core-api chưa phân tán"
+- claude-session 1f780174 — "Rate limit nằm trong bộ nhớ từng pod"
+- file apps/core-api/src/app/app.module.ts
+- commit 1ffebf3 — "THROTTLE_STORAGE=redis khoá theo req.ip"
+
+## Sources
+
+- claude
+- code
+- codex
+- docs
+- git
+
+Back to [issues/index.md](index.md) · [issues/deploy-config.md](deploy-config.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P077.md -->
+
+# P077: Test hard-kill của run-stage lỗi trên Windows (exit 124)
+
+id: P077
+status: open
+tier: A · area: windows-toolchain · date: 2026-09-03 · confidence: high
+resolution type: none-yet
+
+## Problem
+
+pnpm agent:verify media FAIL trên Windows: test hard-kill trong scripts/ci/run-stage.test.mjs kỳ vọng exit 124 nhưng nhận rỗng (2 test lần đầu, 3 test khi retry).
+
+## Root cause
+
+Test harness chung không portable trên Windows (cơ chế kill/timeout); không phải lỗi LiveKit.
+
+## Resolution
+
+Chỉ chẩn đoán là finding độ ổn định CI portability; chưa thấy sửa trong bằng chứng.
+
+## Evidence
+
+- codex-thread 01a06739 — "Gate media chưa PASS, nhưng lỗi nằm ở test harness chung `scripts/ci/run-stage.test.mjs` trên Windows"
+- file scripts/ci/run-stage.test.mjs
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/windows-toolchain.md](windows-toolchain.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P078.md -->
+
+# P078: PR Dependabot đỏ vì chính sách minimumReleaseAge của pnpm
+
+id: P078
+status: open
+tier: A · area: dependencies · date: 2026-09-09 · confidence: high
+resolution type: none-yet
+
+## Problem
+
+Các PR bump dependency của Dependabot (next, vitest, joi, axios...) fail ở bước quality preflight với ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION nên không merge được.
+
+## Root cause
+
+Chính sách chuỗi cung ứng của pnpm 11 từ chối các bản phát hành quá mới, trong khi Dependabot đề xuất đúng các bản mới nhất.
+
+## Resolution
+
+Đúng thiết kế nhưng chưa xử lý: chờ bản đủ tuổi hoặc cấu hình ngoại lệ có chủ đích cho gói cần cập nhật gấp.
+
+## Evidence
+
+- ci-run 37845423227 — "ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION"
+- ci-run 37405486552
+
+## Sources
+
+- github-actions
+
+Back to [issues/index.md](index.md) · [issues/dependencies.md](dependencies.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P079.md -->
+
+# P079: Push bị GitHub từ chối 403 (sai tài khoản)
+
+id: P079
+status: fixed
+tier: A · area: ci-cd · date: 2026-10-08 · confidence: high
+resolution type: env-config
+
+## Problem
+
+Push bị GitHub từ chối 403: remote xác thực bằng tài khoản manhpv-3661 không có quyền ghi repo ducmanh001/litmatch.
+
+## Root cause
+
+gh đang active sai tài khoản; tài khoản owner ducmanh001 đang inactive.
+
+## Resolution
+
+Chuyển tài khoản active của gh sang ducmanh001 rồi push thành công, mở PR #75.
+
+## Evidence
+
+- codex-thread 01a11bf9 — "Quyền push đã được sửa bằng cách chuyển `gh` sang tài khoản owner"
+- pr #75
+
+## Sources
+
+- codex
+- git
+
+Back to [issues/index.md](index.md) · [issues/ci-cd.md](ci-cd.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P080.md -->
+
+# P080: Chạm session limit vì workflow nhiều agent (đốt ~2,9M token)
+
+id: P080
+status: fixed
+tier: B · area: ai-agent-process · date: 2026-10-08 · confidence: high
+resolution type: process-rule
+
+## Problem
+
+Workflow 10 agent song song đốt ~2.9M token trong 16 phút, chạm session limit hai lần (1:50am, 05:57), giết toàn bộ agent không có kết quả; từng mở 3 sub-agent vượt giới hạn 2.
+
+## Root cause
+
+Chạy nhiều agent đồng thời, không ghi kết quả từng phần, vượt trần 2 agent của AGENTS.md.
+
+## Resolution
+
+Quy tắc mới: trích xuất tất định bằng AST/validator trước, tối đa 2 agent, ghi partial output, dừng khi lỗi limit, sao lưu, publish sớm; lưu memory feedback-keep-work-cheap-and-fast.
+
+## Evidence
+
+- memory feedback-keep-work-cheap-and-fast.md — "burned ~2.9M subagent tokens in 16 minutes and hit the account "session limit""
+- claude-session 9353f1cf — "You've hit your session limit · resets 1:50am (Asia/Bangkok)"
+- claude-session 1f780174
+
+## Sources
+
+- claude
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P081.md -->
+
+# P081: Báo động giả: /metrics trả 404 (đúng thiết kế OTLP)
+
+id: P081
+status: false-alarm
+tier: C · area: observability · date: 2026-10-09 · confidence: high
+resolution type: none-yet
+
+## Problem
+
+Prometheus /metrics public trả 404.
+
+## Root cause
+
+Đúng thiết kế: core-api/signaling-gateway đẩy metrics OTLP lên Grafana, Alloy chỉ scrape LiveKit; không expose /metrics.
+
+## Resolution
+
+Kết luận không phải lỗi, không mở /metrics public; chỉ cần xác nhận biến GRAFANA_CLOUD_* và log '[metrics] gửi thành công'.
+
+## Evidence
+
+- codex-thread 01a11dea — "`/metrics` hiện trả `404` là đúng với kiến trúc repo hiện tại"
+- file observability/alloy/config.alloy
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/observability.md](observability.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P082.md -->
+
+# P082: Báo động giả: Nearby 403 / Feed chặn guest là đúng chính sách
+
+id: P082
+status: false-alarm
+tier: C · area: auth-security · date: 2026-10-09 · confidence: high
+resolution type: none-yet
+
+## Problem
+
+Discovery Nearby trả 403 và Feed chặn guest đăng bài khi test bằng tài khoản khách.
+
+## Root cause
+
+Đúng chính sách: chưa bật hiển thị vị trí; tài khoản guest bị giới hạn tính năng.
+
+## Resolution
+
+Kết luận không phải lỗi; UI đã hướng dẫn bật vị trí. Đề xuất test bằng 2 user thật để phủ đủ tính năng.
+
+## Evidence
+
+- codex-thread 01a11dea — "Discovery Nearby trả `403` khi chưa bật hiển thị vị trí: đúng policy"
+
+## Sources
+
+- codex
+
+Back to [issues/index.md](index.md) · [issues/auth-security.md](auth-security.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P083.md -->
+
+# P083: Báo động giả: Party media lỗi khi headless không cấp mic
+
+id: P083
+status: false-alarm
+tier: C · area: realtime-gateway · date: 2026-10-09 · confidence: high
+resolution type: none-yet
+
+## Problem
+
+Party media báo lỗi khi chạy browser headless.
+
+## Root cause
+
+Không cấp quyền microphone cho browser test; cấp quyền thì PASS.
+
+## Resolution
+
+Chạy lại với quyền microphone, kết nối LiveKit thành công.
+
+## Evidence
+
+- codex-thread 01a11dea — "Party media chỉ báo lỗi khi chạy headless browser không cấp quyền microphone"
+
+## Sources
+
+- codex
+
+Back to [issues/index.md](index.md) · [issues/realtime-gateway.md](realtime-gateway.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P084.md -->
+
+# P084: Báo động giả: throttle đăng nhập guest 5 lần/phút chặn retest
+
+id: P084
+status: false-alarm
+tier: C · area: auth-security · date: 2026-10-09 · confidence: medium
+resolution type: process-rule
+
+## Problem
+
+Retest sâu bị API guest login chặn tạm thời do rate limit 5 lần/phút từ IP test.
+
+## Root cause
+
+Rate limit đăng nhập hoạt động đúng; test chạy quá nhiều lần login.
+
+## Resolution
+
+Chờ hết cửa sổ rate limit rồi chạy lại, không kết luận từ lần retry lỗi.
+
+## Evidence
+
+- codex-thread 01a11dea — "rate limit đăng nhập (5 lần/phút) từ IP test"
+
+## Sources
+
+- codex
+
+Back to [issues/index.md](index.md) · [issues/auth-security.md](auth-security.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P085.md -->
+
+# P085: Guest reload mất device token → Matching 401
+
+id: P085
+status: open
+tier: A · area: frontend-ux · date: 2026-10-09 · confidence: high
+resolution type: none-yet
+
+## Problem
+
+Guest reload trang rồi vào Matching: POST /matching/tickets trả 401; GET /support/tickets/me cũng có thể 401. SPA navigation không reload thì 201.
+
+## Root cause
+
+guestDeviceToken chỉ lưu trong memory (token-store.ts), mất sau reload; matching.controller yêu cầu header X-Guest-Device-Token.
+
+## Resolution
+
+Chỉ chẩn đoán: cần lưu/reissue guest token khi restore session và guard query support trước khi có phiên; chưa thấy commit sửa.
+
+## Evidence
+
+- codex-thread 01a11dea — "Guest reload làm Matching trả `401` — mức độ cao"
+- file libs/api-client/src/lib/token-store.ts
+
+## Sources
+
+- code
+- codex
+
+Back to [issues/index.md](index.md) · [issues/frontend-ux.md](frontend-ux.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P086.md -->
+
+# P086: Relay realtime gửi trùng event theo số pod (LRN-011)
+
+id: P086
+status: fixed
+tier: A · area: realtime-gateway · date: 2026-10-09 · confidence: high
+resolution type: code-fix, design-doc-adr, test-added
+
+## Problem
+
+Relay realtime của signaling-gateway gửi trùng event: mỗi socket nhận N bản (N = số pod).
+
+## Root cause
+
+Mọi pod PSUBSCRIBE realtime:user:* và relay bằng server.to(room).emit; Redis cluster adapter lại chuyển tiếp broadcast sang các pod khác.
+
+## Resolution
+
+Dùng server.local khi emit. Test hai pod chạy mã thật @socket.io/redis-adapter trên bus giả + 1 case Redis thật (đã xác nhận đỏ khi bỏ fix). Ghi LRN-2026-011. Đánh đổi của relay cục bộ khi pod mất subscription đã được ghi vào docs/services/realtime-gateway.md (3888a32).
+
+## Evidence
+
+- commit d639899 — "relay realtime chỉ emit cho room cục bộ để không gửi trùng theo số pod"
+- memory project-litmatch-service-map.md — "relay in signaling-gateway may duplicate events across pods"
+- claude-session 1f780174 — "với 2 pod, socket nhận 2 bản của cùng một sự kiện"
+- file apps/signaling-gateway/src/app/signaling.gateway.ts
+- commit 3888a32
+
+## Sources
+
+- claude
+- claude-memory
+- code
+- git
+
+Back to [issues/index.md](index.md) · [issues/realtime-gateway.md](realtime-gateway.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P087.md -->
+
+# P087: Bỏ qua kiểm bundleId Apple khi env rỗng
+
+id: P087
+status: fixed
+tier: A · area: auth-security · date: 2026-10-09 · confidence: high
+resolution type: code-fix, env-config
+
+## Problem
+
+Webhook Apple bỏ qua kiểm tra bundleId khi ECONOMY_APPLE_BUNDLE_ID rỗng ở chế độ store, nên app khác dùng chung chuỗi chứng chỉ Apple có thể qua.
+
+## Root cause
+
+Env validation cho phép bundle id rỗng ở ECONOMY_IAP_VERIFIER=store.
+
+## Resolution
+
+Env validation từ chối boot ở chế độ store nếu thiếu ECONOMY_APPLE_BUNDLE_ID; dev/disabled vẫn cho rỗng. Mở rộng sau rà soát (09/10): webhook dùng ECONOMY_APPLE_WEBHOOK_VERIFIER (mặc định store) chứ không phải ECONOMY_IAP_VERIFIER, nên bắt buộc giờ gồm IAP store HOẶC (webhook store và đã điền ECONOMY_APPLE_ROOT_CA_PEM). Docs ghi rõ kiểm receipt hiện chưa so bundle_id.
+
+## Evidence
+
+- commit 5a56d6a — "bắt buộc ECONOMY_APPLE_BUNDLE_ID khi ECONOMY_IAP_VERIFIER=store"
+- memory project-litmatch-service-map.md — "Apple bundleId check skipped when ECONOMY_APPLE_BUNDLE_ID empty"
+- commit 5a56d6a — "fix(economy): bắt buộc ECONOMY_APPLE_BUNDLE_ID khi ECONOMY_IAP_VERIFIER=store"
+- claude-session 1f780174
+- commit fb29385 — "cũng bắt buộc khi webhook Apple store có Root CA"
+
+## Sources
+
+- claude
+- claude-memory
+- git
+
+Back to [issues/index.md](index.md) · [issues/auth-security.md](auth-security.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P088.md -->
+
+# P088: View count video cộng đôi khi đồng thời
+
+id: P088
+status: fixed
+tier: A · area: short-video · date: 2026-10-09 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+recordView có thể cộng đôi view count khi đồng thời; đường save() bắt unique violation trong transaction bị Postgres huỷ.
+
+## Root cause
+
+Check-then-act với save() + bắt unique violation trong transaction đã aborted.
+
+## Resolution
+
+INSERT ... ON CONFLICT DO NOTHING rồi SELECT ... FOR UPDATE, bỏ đường save()+catch (liên hệ LRN-2026-002).
+
+## Evidence
+
+- commit d506ca2 — "view count không cộng đôi khi đồng thời"
+- memory project-litmatch-service-map.md — "short-video view-count race"
+- commit d506ca2 — "fix(short-video): view count không cộng đôi khi đồng thời; sweeper không đói video failed mới"
+
+## Sources
+
+- claude-memory
+- git
+
+Back to [issues/index.md](index.md) · [issues/short-video.md](short-video.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P089.md -->
+
+# P089: Sweeper video lỗi bị đói (lặp 200 hàng cũ nhất)
+
+id: P089
+status: fixed
+tier: A · area: short-video · date: 2026-10-09 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+Sweeper video lặp lại 200 hàng cũ nhất nên video failed mới bị bỏ đói, không được dọn storage.
+
+## Root cause
+
+Không có cột đánh dấu đã dọn; hàng lỗi luôn nằm đầu hàng đợi.
+
+## Resolution
+
+Thêm cột videos.storage_cleaned_at (migration mới) để hàng đã dọn rời hàng đợi, hàng lỗi bị đẩy về cuối.
+
+## Evidence
+
+- commit d506ca2 — "sweeper không đói video failed mới"
+- memory project-litmatch-service-map.md — "failed-video sweeper starvation"
+- commit d506ca2 — "fix(short-video): view count không cộng đôi khi đồng thời; sweeper không đói video failed mới"
+
+## Sources
+
+- claude-memory
+- git
+
+Back to [issues/index.md](index.md) · [issues/short-video.md](short-video.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P090.md -->
+
+# P090: Huỷ ván mini-game ghi đè ván đã resolved
+
+id: P090
+status: fixed
+tier: A · area: matching · date: 2026-10-09 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+Huỷ ván mini-game có thể ghi đè ván đã resolved thành cancelled khi thua race.
+
+## Root cause
+
+Cancel không phải conditional update (check-then-act).
+
+## Resolution
+
+UPDATE ... WHERE status = waiting_moves; thua race trả 409 (đã có kết quả) hoặc trạng thái cancelled idempotent.
+
+## Evidence
+
+- commit d4f3e81 — "huỷ ván là conditional update, không ghi đè ván đã resolved"
+- memory project-litmatch-service-map.md — "mini-game cancel can overwrite resolved"
+- commit d4f3e81 — "fix(mini-game): huỷ ván là conditional update, không ghi đè ván đã resolved"
+- claude-session 1f780174
+
+## Sources
+
+- claude
+- claude-memory
+- git
+
+Back to [issues/index.md](index.md) · [issues/matching.md](matching.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P091.md -->
+
+# P091: Xoay JWT_SECRET đăng xuất mọi người
+
+id: P091
+status: fixed
+tier: B · area: auth-security · date: 2026-10-09 · confidence: medium
+resolution type: code-fix, process-rule
+
+## Problem
+
+Xoay JWT_SECRET sẽ đăng xuất toàn bộ người dùng vì không có khoá cũ để xác minh token đang sống.
+
+## Root cause
+
+Chỉ hỗ trợ một khoá ký/xác minh.
+
+## Resolution
+
+Thêm JWT_SECRET_PREVIOUS: ký bằng khoá mới, core-api và gateway chỉ thử khoá cũ khi chữ ký không khớp; quy trình xoay (gateway trước, rồi core-api) ở k8s/README.md. Sau rà soát (09/10): xoay theo 3 bước (phân phối khoá mới làm khoá phụ, đổi vai, gỡ khoá phụ) vì rollout cuốn chiếu làm pod cũ từ chối token do pod mới ký; env validation từ chối JWT_SECRET_PREVIOUS trùng AUTH_GUEST_DEVICE_TOKEN_SECRET (nếu trùng, guest-device token sống nhiều ngày sẽ verify được như access token).
+
+## Evidence
+
+- commit 6d1082f — "xoay JWT_SECRET không đăng xuất mọi người (JWT_SECRET_PREVIOUS)"
+- commit 54c66ab — "JWT_SECRET_PREVIOUS trùng AUTH_GUEST_DEVICE_TOKEN_SECRET"
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/auth-security.md](auth-security.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P092.md -->
+
+# P092: Windows thiếu zip/unzip nên docs:check không chạy
+
+id: P092
+status: mitigated
+tier: A · area: windows-toolchain · date: 2026-10-09 · confidence: high
+resolution type: env-config
+
+## Problem
+
+Máy Windows thiếu zip/unzip nên pnpm docs:check/generate DOCX không chạy; unzip Git không đọc entry có bracket.
+
+## Root cause
+
+Generator dựa vào zip/unzip không có trên Windows.
+
+## Resolution
+
+Dùng shim tạm (.NET ZipArchive tạo, 7-Zip kiểm tra) trong temp/PATH của lệnh, không sửa tooling repo; pnpm docs:check PASS.
+
+## Evidence
+
+- commit 50f7dc9 — "DOCX sinh bằng shim 7-Zip vì máy Windows không có zip/unzip"
+- doc docs/plans/2026-10-08-capacity-and-scaling-plan.md — "thiếu `zip` và Git `unzip` không đọc được entry có bracket"
+
+## Sources
+
+- docs
+- git
+
+Back to [issues/index.md](index.md) · [issues/windows-toolchain.md](windows-toolchain.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P093.md -->
+
+# P093: Báo cáo bằng chứng generated bị stale
+
+id: P093
+status: fixed
+tier: A · area: docs-tooling · date: 2026-10-09 · confidence: high
+resolution type: code-fix
+
+## Problem
+
+Báo cáo bằng chứng generated bị stale vì vị trí source dịch chuyển.
+
+## Root cause
+
+Source dịch chuyển nhưng báo cáo sinh tự động chưa chạy lại.
+
+## Resolution
+
+Chạy pnpm docs:generate để sinh lại; docs:check PASS; không đổi status capability.
+
+## Evidence
+
+- commit 50f7dc9 — "sinh lại báo cáo bằng chứng product/spec sau khi vị trí source dịch chuyển"
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/docs-tooling.md](docs-tooling.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P094.md -->
+
+# P094: Giới hạn đã biết: advisory lock Palm/Movie Match, outbox chưa có consumer/retention
+
+id: P094
+status: open
+tier: B · area: matching · date: 2026-10-09 · confidence: medium
+resolution type: design-doc-adr, none-yet
+
+## Problem
+
+Khoá advisory toàn cục của Palm/Movie Match là giới hạn scale; outbox Economy chưa có consumer và retention.
+
+## Root cause
+
+Thiết kế ban đầu chấp nhận khoá toàn cục; outbox relay tắt ở profile hosted-free nên chưa có consumer.
+
+## Resolution
+
+Mới ghi tài liệu giới hạn đã biết, điều kiện đổi và quyết định cần chốt trước khi bật relay ở production; chưa đổi code.
+
+## Evidence
+
+- commit 67742ff — "Outbox Economy: chưa có consumer và chưa có ⏎ retention"
+- commit 67742ff — "docs(core-api): ghi giới hạn đã biết của hàng đợi ghép ẩn danh và của outbox"
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/matching.md](matching.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P095.md -->
+
+# P095: Bước prune xoá nhầm 15 kết luận hợp lệ (pipeline service-map)
+
+id: P095
+status: fixed
+tier: B · area: ai-agent-process · date: 2026-10-09 · confidence: high
+resolution type: process-rule
+
+## Problem
+
+Bước dọn dữ liệu (validate-localconf --prune) xoá nhầm 15 kết luận hợp lệ sau khi flow-packets3 chia lại packet.
+
+## Root cause
+
+Prune chạy trên manifest đã bị flow-packets3.cjs.re-partition, lệch với agent output.
+
+## Resolution
+
+Khôi phục từ bản sao lưu; validators dùng packets/localconf-manifest.run1.json và build-all không còn prune localconf.
+
+## Evidence
+
+- memory project-litmatch-service-map.md — "validate-localconf --prune"
+- claude-session 1f780174 — "xoá nhầm 15 kết luận hợp lệ"
+
+## Sources
+
+- claude
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P096.md -->
+
+# P096: Heuristic độ phủ khớp đuôi đường dẫn ngắn → dương tính giả
+
+id: P096
+status: fixed
+tier: B · area: ai-agent-process · date: 2026-10-09 · confidence: high
+resolution type: code-fix, process-rule
+
+## Problem
+
+Heuristic kiểm độ phủ khớp đuôi đường dẫn ngắn (vd 'end') gây dương tính giả, khai báo phủ sai (có 2 khai báo sai ở sơ đồ cũ).
+
+## Root cause
+
+check-covers khớp suffix đường dẫn quá lỏng, không kèm METHOD.
+
+## Resolution
+
+check-covers.cjs yêu cầu METHOD + path suffix, có covers-override.json cho 3 ngoại lệ; sửa 2 khai báo sai.
+
+## Evidence
+
+- memory project-litmatch-service-map.md — "check-covers now requires METHOD + path suffix"
+- claude-session 1f780174
+
+## Sources
+
+- claude
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P097.md -->
+
+# P097: Sửa script qua shell lồng quote làm hỏng regex; Workflow scriptPath bị từ chối
+
+id: P097
+status: fixed
+tier: B · area: ai-agent-process · date: 2026-10-09 · confidence: medium
+resolution type: code-fix, process-rule
+
+## Problem
+
+Sửa script build qua shell lồng quote làm hỏng regex; swap-limits cắt luôn hàm renderFindings; Workflow scriptPath bị từ chối; sơ đồ cắt nhãn >3 dòng (64/1007 bước).
+
+## Root cause
+
+Dùng sed/node -e với quoting lồng nhau; scriptPath phải là file do tool trả về; renderer giới hạn 3 dòng.
+
+## Resolution
+
+Dùng Write/Edit thay shell, chèn lại renderFindings, truyền args.tasks cho Workflow, nâng giới hạn nhãn lên 7 dòng.
+
+## Evidence
+
+- memory project-litmatch-service-map.md — "build scripts edited through nested shell quoting corrupt regexes"
+- claude-session 1f780174
+
+## Sources
+
+- claude
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P098.md -->
+
+# P098: Báo cáo đầu chỉ là smoke test, bỏ sót lỗi profile
+
+id: P098
+status: fixed
+tier: B · area: ai-agent-process · date: 2026-10-09 · confidence: medium
+resolution type: process-rule
+
+## Problem
+
+Báo cáo đầu của agent chỉ là smoke test route nhưng bị hiểu là kiểm thử đầy đủ, nên bỏ sót lỗi profile follow/nhắn tin.
+
+## Root cause
+
+Phạm vi test mới là route + vài flow chính, không test từng nút/action.
+
+## Resolution
+
+Agent thừa nhận, chạy lại functional sweep 2 tài khoản guest và tìm ra lỗi 404 profile; kết luận lại 'chưa PASS toàn bộ'.
+
+## Evidence
+
+- codex-thread 01a11dea — "website đã qua smoke test, chưa phải full functional test"
+
+## Sources
+
+- codex
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P099.md -->
+
+# P099: Ranked sort loại hàng có rankScore IS NULL
+
+id: P099
+status: open
+tier: B · area: other · date: 2026-10-09 · confidence: medium
+resolution type: none-yet
+
+## Problem
+
+Quan sát từ audit tĩnh service-map; chưa tái hiện ở runtime, chưa có commit sửa.
+
+## Root cause
+
+Suy ra từ đọc code (audit tĩnh), chưa tái hiện.
+
+## Resolution
+
+Chưa xử lý; được ghi trong memory như quan sát cho dev team.
+
+## Evidence
+
+- memory project-litmatch-service-map.md — "ranked sort excludes rankScore IS NULL"
+
+## Sources
+
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/other.md](other.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P100.md -->
+
+# P100: getHiddenUserIds không có cửa sổ thời gian (cần quyết định sản phẩm)
+
+id: P100
+status: open
+tier: B · area: other · date: 2026-10-09 · confidence: medium
+resolution type: none-yet
+
+## Problem
+
+Quan sát từ audit tĩnh service-map; chưa tái hiện ở runtime, chưa có commit sửa.
+
+## Root cause
+
+Suy ra từ đọc code (audit tĩnh), chưa tái hiện.
+
+## Resolution
+
+Chưa xử lý; được ghi trong memory như quan sát cho dev team.
+
+## Evidence
+
+- memory project-litmatch-service-map.md — "getHiddenUserIds has no time window"
+
+## Sources
+
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/other.md](other.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P101.md -->
+
+# P101: Lời mời hết hạn kiểu lazy-expire không được persist
+
+id: P101
+status: open
+tier: B · area: other · date: 2026-10-09 · confidence: medium
+resolution type: none-yet
+
+## Problem
+
+Quan sát từ audit tĩnh service-map; chưa tái hiện ở runtime, chưa có commit sửa.
+
+## Root cause
+
+Suy ra từ đọc code (audit tĩnh), chưa tái hiện.
+
+## Resolution
+
+Chưa xử lý; được ghi trong memory như quan sát cho dev team.
+
+## Evidence
+
+- memory project-litmatch-service-map.md — "invite lazy-expire not persisted"
+
+## Sources
+
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/other.md](other.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P102.md -->
+
+# P102: Comment k8s lỗi thời
+
+id: P102
+status: open
+tier: B · area: other · date: 2026-10-09 · confidence: medium
+resolution type: none-yet
+
+## Problem
+
+Quan sát từ audit tĩnh service-map; chưa tái hiện ở runtime, chưa có commit sửa.
+
+## Root cause
+
+Suy ra từ đọc code (audit tĩnh), chưa tái hiện.
+
+## Resolution
+
+Chưa xử lý; được ghi trong memory như quan sát cho dev team.
+
+## Evidence
+
+- memory project-litmatch-service-map.md — "stale k8s comment"
+
+## Sources
+
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/other.md](other.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P103.md -->
+
+# P103: Phân trang cursor video-queue admin (pending_review tăng dần nhưng cursor dùng less-than; suy luận)
+
+id: P103
+status: open
+tier: B · area: other · date: 2026-10-09 · confidence: medium
+resolution type: none-yet
+
+## Problem
+
+Quan sát từ audit tĩnh service-map; chưa tái hiện ở runtime, chưa có commit sửa.
+
+## Root cause
+
+Suy ra từ đọc code (audit tĩnh), chưa tái hiện.
+
+## Resolution
+
+Chưa xử lý; được ghi trong memory như quan sát cho dev team.
+
+## Evidence
+
+- memory project-litmatch-service-map.md — "admin video-queue cursor pagination"
+
+## Sources
+
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/other.md](other.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P104.md -->
+
+# P104: soul-match end phát lại soul.ended khi replay
+
+id: P104
+status: open
+tier: B · area: other · date: 2026-10-09 · confidence: medium
+resolution type: none-yet
+
+## Problem
+
+Quan sát từ audit tĩnh service-map; chưa tái hiện ở runtime, chưa có commit sửa.
+
+## Root cause
+
+Suy ra từ đọc code (audit tĩnh), chưa tái hiện.
+
+## Resolution
+
+Chưa xử lý; được ghi trong memory như quan sát cho dev team.
+
+## Evidence
+
+- memory project-litmatch-service-map.md — "soul-match end republishes soul.ended on replay"
+
+## Sources
+
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/other.md](other.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P105.md -->
+
+# P105: Spec integration liệt kê migration tường minh: migration mới phải đăng ký ở 2 spec
+
+id: P105
+status: fixed
+tier: B · area: ai-agent-process · date: 2026-10-09 · confidence: medium
+resolution type: process-rule
+
+## Problem
+
+Thêm migration mới (videos.storage_cleaned_at) mà không đăng ký vào short-video.integration.spec.ts và demo-short-videos.integration.spec.ts thì integration test không thấy cột mới; undoLastMigration của spec sau phải undo 2 lần.
+
+## Root cause
+
+Spec integration của repo liệt kê migration thủ công thay vì tự quét thư mục.
+
+## Resolution
+
+Đăng ký migration 1757800000000 vào cả hai spec và sửa số lần undo.
+
+## Evidence
+
+- memory project-litmatch-multi-pod-readiness-branch.md — "the repo's integration specs list migrations explicitly"
+
+## Sources
+
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P106.md -->
+
+# P106: git apply --unidiff-zero đặt sai vị trí hunk chèn thuần
+
+id: P106
+status: fixed
+tier: B · area: ai-agent-process · date: 2026-10-09 · confidence: medium
+resolution type: process-rule
+
+## Problem
+
+Tách commit bằng git apply --unidiff-zero làm hunk chỉ-chèn bị đặt lệch 1 dòng.
+
+## Root cause
+
+Hành vi của git apply với hunk -U0.
+
+## Resolution
+
+Tự áp hunk -U0 lên nội dung nền để tách commit.
+
+## Evidence
+
+- memory project-litmatch-multi-pod-readiness-branch.md — "`git apply --unidiff-zero` mis-places pure-insertion hunks by one line"
+
+## Sources
+
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P107.md -->
+
+# P107: File CRLF trong working tree: sửa bằng script phải giữ EOL
+
+id: P107
+status: fixed
+tier: B · area: ai-agent-process · date: 2026-10-09 · confidence: medium
+resolution type: process-rule
+
+## Problem
+
+Một số file (deploy/production/.env.example) là CRLF trong working tree; script sửa dễ làm đổi EOL và sinh diff nhiễu.
+
+## Root cause
+
+Repo trộn LF/CRLF trên Windows (.gitattributes chỉ áp một phần).
+
+## Resolution
+
+Script sửa file giữ nguyên EOL của từng file.
+
+## Evidence
+
+- memory project-litmatch-multi-pod-readiness-branch.md — "some repo files are CRLF in the working tree"
+
+## Sources
+
+- claude-memory
+
+Back to [issues/index.md](index.md) · [issues/ai-agent-process.md](ai-agent-process.md) · [roadmap](../roadmap.md)
+
+
+<!-- FILE: https://ducmanh001.github.io/litmatch-error-history/issues/P108.md -->
+
+# P108: Replay upload-intent cấp lại URL sau khi video đã published/failed
+
+id: P108
+status: fixed
+tier: A · area: short-video · date: 2026-10-09 · confidence: high
+resolution type: code-fix, test-added
+
+## Problem
+
+Replay cùng Idempotency-Key sau khi video đã published hoặc failed vẫn cấp URL upload mới: tác giả thay được file đã duyệt, và object upload muộn của video failed (đã đánh dấu dọn) thành rác vĩnh viễn.
+
+## Root cause
+
+Đường replay idempotent của upload-intent không kiểm trạng thái video trước khi cấp lại URL.
+
+## Resolution
+
+Chỉ cấp lại URL khi video còn uploading, ngược lại trả 409. Test FOR UPDATE viết lại tất định (giữ khoá hàng ở giao dịch A; xác nhận đỏ khi bỏ khoá) thay cho test bắn nhiều request vốn vẫn xanh khi thiếu khoá.
+
+## Evidence
+
+- commit dc32ca0 — "replay upload-intent chỉ cấp lại URL khi còn uploading"
+
+## Sources
+
+- git
+
+Back to [issues/index.md](index.md) · [issues/short-video.md](short-video.md) · [roadmap](../roadmap.md)
